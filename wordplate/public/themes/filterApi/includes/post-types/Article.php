@@ -38,9 +38,9 @@ add_action('init', function() {
             'multiple' => false,
         ]),
         acf_textarea([
-            'name' => 'description',
-            'label' => __('Description'),
-            'instructions' => __('Add a description of the article.'),
+            'name' => 'lead',
+            'label' => __('Lead paragraph'),
+            'instructions' => __('Add the lead paragraph of the article.'),
             'required' => true,
         ]),
         acf_flexible_content([
@@ -48,6 +48,27 @@ add_action('init', function() {
             'label'         => __('Sections'),
             'button_label'  => __('Add a new section'),
             'layouts'        => [
+                acf_layout([
+                    'name'          => 'hero_section',
+                    'label'         => __('Title section with image'),
+                    'sub_fields'    => [
+                        acf_wysiwyg([
+                            'name' => 'content',
+                            'label' => __('Content'),
+                            'instructions' => __('Add the text content.'),
+                            'required' => true,
+                            'media_upload' => false,
+                            'tabs' => ['visual', 'text'],
+                            'toolbar' => 'simple',
+                        ]),
+                        acf_image([
+                            'name' => 'image',
+                            'label' => __('Image'),
+                            'instructions' => __('Add the backgroundimage to the article title.'),
+                            'required' => true,
+                        ])
+                    ]
+                ]),
                 acf_layout([
                     'name'          => 'image_section',
                     'label'         => __('Section with image'),
