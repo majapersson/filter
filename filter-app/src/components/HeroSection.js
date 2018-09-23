@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import TextSection from "./TextSection";
 import Highlight from "./Highlight";
+import ExpandButton from "./ExpandButton";
 
 const Hero = styled.article`
   display: flex;
@@ -65,6 +66,7 @@ export default class HeroSection extends Component {
               article.magazine.published
             })
           </Magazine>
+          <ExpandButton />
         </Highlight>
         <TextSection content={section.content} lead={article.lead} />
       </Hero>
