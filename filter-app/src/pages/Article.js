@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import HeroSection from "../components/HeroSection";
+import QuoteSection from "../components/QuoteSection";
 
 import { API_ROOT } from "../Helpers.js";
 
@@ -22,11 +23,15 @@ export default class Article extends Component {
     this.setState({
       article: {
         id: article.ID,
+        title: article.post_title,
         author: {
           name: fields.author.post_title,
           id: fields.author.ID
         },
-        magazine: fields.magazine.post_title,
+        magazine: {
+          title: fields.magazine.post_title,
+          published: fields.magazine.published
+        },
         lead: fields.lead,
         sections: fields.sections
       }
@@ -41,7 +46,7 @@ export default class Article extends Component {
     const { article } = this.state;
     console.log(article);
     return (
-      <section>
+      <section className="Article">
         {article.id === null ? (
           <div>Loading...</div>
         ) : (
@@ -55,6 +60,17 @@ export default class Article extends Component {
                   part={index + 1}
                 />
               );
+            } else if (section.acf_fc_layout === "quote_section") {
+              return (
+                <QuoteSection
+                  article={article}
+                  section={section}
+                  key={index}
+                  part={index + 1}
+                />
+              );
+            } else {
+              return null;
             }
           })
         )}
