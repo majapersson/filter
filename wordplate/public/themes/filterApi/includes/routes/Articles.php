@@ -19,6 +19,7 @@ add_action( 'rest_api_init', function () {
         'callback' => function ($data) {
             $post = get_post($data['id']);
             $post->fields = get_fields($post->ID);
+            $post->fields['magazine']->published = get_field('published', $post->fields['magazine']->ID);
             return $post;
         }
     ]);

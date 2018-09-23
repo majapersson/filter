@@ -100,7 +100,7 @@ add_action('init', function() {
                             'instructions' => __('Add the text content.'),
                             'required' => true,
                             'media_upload' => false,
-                            'tabs' => 'visual',
+                            'tabs' => ['visual', 'text'],
                             'toolbar' => 'simple',
                         ]),
                         acf_text([
