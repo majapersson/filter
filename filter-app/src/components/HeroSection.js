@@ -8,26 +8,40 @@ const Hero = styled.article`
   display: flex;
 `;
 
+const Overlay = styled.div`
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background-color: rgba(0, 0, 0, 0.3);
+`;
+
 const Title = styled.h1`
   font-family: "Changa One", "Impact", sans-serif;
-  font-size: 4.5rem;
+  font-size: 5vw;
   font-weight: 400;
-  line-height: 4.5rem;
+  line-height: 5vw;
   text-transform: uppercase;
+  margin-bottom: 2rem;
 `;
 
 const Author = styled.p`
-  opacity: 0.67;
-  font-style: italic;
+  text-transform: uppercase;
+  margin: 0;
 
-  > span {
-    opacity: 1;
+  span {
+    font-style: italic;
+    opacity: 0.67;
+    text-transform: none;
   }
 `;
 
 const Magazine = styled.p`
   opacity: 0.67;
   text-transform: uppercase;
+  margin: 0;
 `;
 
 export default class HeroSection extends Component {
@@ -39,10 +53,12 @@ export default class HeroSection extends Component {
           image={section.image.url}
           align={"right"}
           className="Highlight"
+          style={{ justifyContent: "flex-start" }}
         >
+          <Overlay className="Overlay" />
           <Title>{article.title}</Title>
           <Author>
-            Text: <span>{article.author.name}</span>
+            <span>Text:</span> {article.author.name}
           </Author>
           <Magazine>
             Publicerad i Filter #{article.magazine.title} ({

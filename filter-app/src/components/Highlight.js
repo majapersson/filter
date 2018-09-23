@@ -1,11 +1,15 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
-export const LeftHighlight = styled.section`
+const StyledHighlight = styled.section`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   flex-basis: 37.5%;
   flex-shrink: 0;
   height: 100vh;
-  padding: 0 3rem;
+  min-width: 37.5vw;
+  padding: 0 6rem 0 3rem;
   position: sticky;
   top: 0;
   left: 0;
@@ -32,6 +36,6 @@ export const LeftHighlight = styled.section`
 
 export default class Highlight extends Component {
   render() {
-    return <LeftHighlight {...this.props} />;
+    return <StyledHighlight {...this.props} />;
   }
 }
