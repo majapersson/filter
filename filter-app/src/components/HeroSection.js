@@ -4,6 +4,7 @@ import styled from "styled-components";
 import TextSection from "./TextSection";
 import Highlight from "./Highlight";
 import ExpandButton from "./ExpandButton";
+import Expand from "./HOC/Expand";
 
 const Hero = styled.article`
   display: flex;
@@ -50,24 +51,31 @@ export default class HeroSection extends Component {
     const { article, section } = this.props;
     return (
       <Hero className="HeroSection">
-        <Highlight
-          image={section.image.url}
-          align={"right"}
-          className="Highlight"
-          style={{ justifyContent: "flex-start" }}
-        >
-          <Overlay className="Overlay" />
-          <Title>{article.title}</Title>
-          <Author>
-            <span>Text:</span> {article.author.name}
-          </Author>
-          <Magazine>
-            Publicerad i Filter #{article.magazine.title} ({
-              article.magazine.published
-            })
-          </Magazine>
-          <ExpandButton />
-        </Highlight>
+        <Expand>
+          {({ expanded, toggle }) => (
+            <Highlight
+              image={section.image.url}
+              align={"right"}
+              className="Highlight"
+              style={{
+                justifyContent: "flex-start",
+                flexBasis: expanded ? "100%" : "37.5%"
+              }}
+            >
+              <Overlay className="Overlay" />
+              <Title>{article.title}</Title>
+              <Author>
+                <span>Text:</span> {article.author.name}
+              </Author>
+              <Magazine>
+                Publicerad i Filter #{article.magazine.title} ({
+                  article.magazine.published
+                })
+              </Magazine>
+              <ExpandButton toggle={toggle} expanded={expanded} />
+            </Highlight>
+          )}
+        </Expand>
         <TextSection content={section.content} lead={article.lead} />
       </Hero>
     );

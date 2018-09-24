@@ -16,6 +16,7 @@ const StyledHighlight = styled.section`
 
   background-color: black;
   color: white;
+  transition: flex-basis 300ms;
 
   ${props =>
     props.image

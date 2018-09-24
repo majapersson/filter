@@ -18,6 +18,10 @@ const Button = styled.button`
 
 export default class ExpandButton extends Component {
   render() {
-    return <Button>+</Button>;
+    return (
+      <Button onClick={this.props.toggle}>
+        {this.props.expanded ? "-" : "+"}
+      </Button>
+    );
   }
 }
