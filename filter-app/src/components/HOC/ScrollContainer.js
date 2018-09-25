@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import throttle from "lodash.throttle";
+import { throttle } from "../../Helpers";
 
 class ScrollContainer extends Component {
   state = {
@@ -24,7 +24,6 @@ class ScrollContainer extends Component {
     const { children } = this.props;
     return children({
       progress: this.state.progress
-      // onScroll: this.throttleScroll
     });
   }
 }
