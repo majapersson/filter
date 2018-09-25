@@ -21,12 +21,20 @@ const ProgressBar = styled.div`
 
 export default class Progress extends Component {
   render() {
+    const { progress, sections } = this.props;
+    const page =
+      Math.floor((this.props.progress / 100) * this.props.sections) + 1;
     return (
       <ProgressBar className="Progress">
-        <Page>1 / 4</Page>
+        <Page>
+          {page}/{sections}
+        </Page>
         <Length>
           <div
-            style={{ backgroundColor: "#000", height: this.props.progress }}
+            style={{
+              backgroundColor: "#000",
+              height: `${this.props.progress}%`
+            }}
           />
         </Length>
       </ProgressBar>

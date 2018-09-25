@@ -19,7 +19,10 @@ class Navigation extends Component {
   render() {
     return (
       <Nav>
-        <Progress />
+        <Progress
+          progress={this.props.progress}
+          sections={this.props.sections}
+        />
         <NavButton icon={"M"} />
         <NavButton icon={"C"} />
       </Nav>

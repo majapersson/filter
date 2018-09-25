@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import styled from "styled-components";
 
 import HeroSection from "../components/HeroSection";
 import QuoteSection from "../components/QuoteSection";
-import Navigation from "../components/Navigation";
+import Navigation from "../components/navigation/Navigation";
+import Logo from "../components/Logo";
+import ScrollContainer from "../components/HOC/ScrollContainer";
 
 import { API_ROOT } from "../Helpers.js";
 
@@ -49,38 +50,57 @@ export default class Article extends Component {
     const { article } = this.state;
     console.log(article);
     return (
-      <React.Fragment>
-        <Navigation />
-        <section className="Article">
-          {article.id === null ? (
-            <div>Loading...</div>
-          ) : (
-            article.sections.map((section, index) => {
-              if (section.acf_fc_layout === "hero_section") {
-                return (
-                  <HeroSection
-                    article={article}
-                    section={section}
-                    key={index}
-                    part={index + 1}
-                  />
-                );
-              } else if (section.acf_fc_layout === "quote_section") {
-                return (
-                  <QuoteSection
-                    article={article}
-                    section={section}
-                    key={index}
-                    part={index + 1}
-                  />
-                );
-              } else {
-                return null;
+      <ScrollContainer>
+        {({ progress }) => (
+          <div>
+            <Logo
+              style={{
+                fill: "#fff",
+                position: "fixed",
+                top: "1.5rem",
+                left: "3rem",
+                zIndex: 2,
+                width: "10rem"
+              }}
+            />
+            <Navigation
+              progress={progress}
+              sections={
+                article.sections !== null ? article.sections.length : ""
               }
-            })
-          )}
-        </section>
-      </React.Fragment>
+            />
+            <section className="Article">
+              {article.id === null ? (
+                <div>Loading...</div>
+              ) : (
+                article.sections.map((section, index) => {
+                  if (section.acf_fc_layout === "hero_section") {
+                    return (
+                      <HeroSection
+                        article={article}
+                        section={section}
+                        key={index}
+                        part={index + 1}
+                      />
+                    );
+                  } else if (section.acf_fc_layout === "quote_section") {
+                    return (
+                      <QuoteSection
+                        article={article}
+                        section={section}
+                        key={index}
+                        part={index + 1}
+                      />
+                    );
+                  } else {
+                    return null;
+                  }
+                })
+              )}
+            </section>
+          </div>
+        )}
+      </ScrollContainer>
     );
   }
 }
