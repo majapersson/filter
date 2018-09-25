@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 
+import ScrollContainer from "../components/HOC/ScrollContainer";
 import HeroSection from "../components/HeroSection";
 import QuoteSection from "../components/QuoteSection";
+import Progress from "../components/navigation/Progress";
 import Navigation from "../components/navigation/Navigation";
-import Logo from "../components/Logo";
-import ScrollContainer from "../components/HOC/ScrollContainer";
 
 import { API_ROOT } from "../Helpers.js";
 
@@ -53,17 +53,8 @@ export default class Article extends Component {
       <ScrollContainer>
         {({ progress }) => (
           <div>
-            <Logo
-              style={{
-                fill: "#fff",
-                position: "fixed",
-                top: "1.5rem",
-                left: "3rem",
-                zIndex: 2,
-                width: "10rem"
-              }}
-            />
-            <Navigation
+            <Navigation />
+            <Progress
               progress={progress}
               sections={
                 article.sections !== null ? article.sections.length : ""

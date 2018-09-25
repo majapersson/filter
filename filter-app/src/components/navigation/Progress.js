@@ -1,7 +1,13 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
-const Page = styled.span``;
+const Page = styled.span`
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  span {
+    font-size: 50%;
+  }
+`;
 
 const Length = styled.div`
   height: 100%;
@@ -12,9 +18,15 @@ const Length = styled.div`
 const ProgressBar = styled.div`
   display: flex;
   flex-direction: column;
+  height: 37.5vh;
+  position: fixed;
+  bottom: 0;
+  right: 62.5vw;
   align-items: center;
   flex-basis: 67%;
   padding: 0.75rem 0;
+  width: 3rem;
+  z-index: 2;
 
   background-color: #fff;
 `;
@@ -26,9 +38,6 @@ export default class Progress extends Component {
       Math.floor((this.props.progress / 100) * this.props.sections) + 1;
     return (
       <ProgressBar className="Progress">
-        <Page>
-          {page}/{sections}
-        </Page>
         <Length>
           <div
             style={{
@@ -37,6 +46,10 @@ export default class Progress extends Component {
             }}
           />
         </Length>
+        <Page>
+          {page}
+          <span>/{sections}</span>
+        </Page>
       </ProgressBar>
     );
   }

@@ -2,29 +2,24 @@ import React, { Component } from "react";
 import styled from "styled-components";
 
 import Progress from "./Progress";
-import NavButton from "./NavButton";
+import Logo from "../Logo";
 
 const Nav = styled.nav`
-  display: flex;
-  flex-direction: column;
-  height: 37.5vh;
+  padding: 1.5rem 3rem;
   position: fixed;
-  bottom: 0;
-  right: 62.5vw;
   z-index: 2;
-  width: 3rem;
 `;
 
 class Navigation extends Component {
   render() {
     return (
       <Nav>
-        <Progress
-          progress={this.props.progress}
-          sections={this.props.sections}
+        <Logo
+          style={{
+            fill: "#fff",
+            width: "10rem"
+          }}
         />
-        <NavButton icon={"M"} />
-        <NavButton icon={"C"} />
       </Nav>
     );
   }
