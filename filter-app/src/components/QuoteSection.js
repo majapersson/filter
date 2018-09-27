@@ -26,9 +26,9 @@ const Quote = styled.blockquote`
 
 export default class QuoteSection extends Component {
   render() {
-    const { article, section, part } = this.props;
+    const { section, page } = this.props;
     return (
-      <Section className="QuoteSection">
+      <Section className="QuoteSection" id={`page-${page}`}>
         <Highlight align={"center"} className="Highlight">
           <Quote>{section.quote}</Quote>
         </Highlight>

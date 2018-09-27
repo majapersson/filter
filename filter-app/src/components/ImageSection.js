@@ -12,7 +12,7 @@ const Section = styled.section`
 
 export default class ImageSection extends Component {
   render() {
-    const { article, section, page } = this.props;
+    const { section, page } = this.props;
     return (
       <Section className="ImageSection" id={`page-${page}`}>
         <Expand>
@@ -30,7 +30,7 @@ export default class ImageSection extends Component {
             </Highlight>
           )}
         </Expand>
-        <TextSection content={section.content} lead={article.lead} />
+        <TextSection content={section.content} />
       </Section>
     );
   }

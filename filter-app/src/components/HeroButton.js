@@ -23,8 +23,6 @@ const Button = styled.div`
   }
 `;
 
-const Icon = styled.img``;
-
 class HeroButton extends Component {
   render() {
     const { title, url, close } = this.props;

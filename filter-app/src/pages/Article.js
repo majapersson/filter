@@ -69,29 +69,22 @@ export default class Article extends Component {
             ) : (
               <section className="Article">
                 <HeroSection article={article} />
-                {article.sections.map((section, index) => {
-                  if (section.acf_fc_layout === "image_section") {
-                    return (
+                {article.sections.map(
+                  (section, index) =>
+                    section.acf_fc_layout === "image_section" ? (
                       <ImageSection
-                        article={article}
                         section={section}
                         key={index}
                         page={index + 1}
                       />
-                    );
-                  } else if (section.acf_fc_layout === "quote_section") {
-                    return (
+                    ) : section.acf_fc_layout === "quote_section" ? (
                       <QuoteSection
-                        article={article}
                         section={section}
                         key={index}
                         page={index + 1}
                       />
-                    );
-                  } else {
-                    return null;
-                  }
-                })}
+                    ) : null
+                )}
               </section>
             )}
           </div>

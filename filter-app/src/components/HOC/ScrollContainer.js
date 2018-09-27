@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import { Component } from "react";
 import { throttle } from "../../Helpers";
 
 class ScrollContainer extends Component {

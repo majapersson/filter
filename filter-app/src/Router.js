@@ -4,7 +4,7 @@ import { injectGlobal, ThemeProvider } from "styled-components";
 
 import Article from "./pages/Article";
 
-const GlobalStyles = injectGlobal`
+injectGlobal`
   @font-face {
     font-family: "National";
     src: url("/assets/fonts/National-Regular.otf") format("opentype");

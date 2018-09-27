@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
-import Progress from "./Progress";
 import Logo from "../Logo";
 
 const Nav = styled.nav`

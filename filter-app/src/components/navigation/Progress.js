@@ -49,7 +49,7 @@ export default class Progress extends Component {
           <div
             style={{
               backgroundColor: "#000",
-              height: `${this.props.progress}%`
+              height: `${progress}%`
             }}
           />
         </Length>
