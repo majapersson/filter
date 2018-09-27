@@ -56,38 +56,40 @@ export default class Article extends Component {
     return (
       <ScrollContainer>
         {({ progress }) => (
-          <div>
-            <Navigation />
+          <React.Fragment>
+            <Navigation user={"Peter Bartel"} />
             <Progress
               progress={progress}
               sections={
                 article.sections !== null ? article.sections.length : ""
               }
             />
-            {article.id === null ? (
-              <div>Loading...</div>
-            ) : (
-              <section className="Article">
-                <HeroSection article={article} />
-                {article.sections.map(
-                  (section, index) =>
-                    section.acf_fc_layout === "image_section" ? (
-                      <ImageSection
-                        section={section}
-                        key={index}
-                        page={index + 1}
-                      />
-                    ) : section.acf_fc_layout === "quote_section" ? (
-                      <QuoteSection
-                        section={section}
-                        key={index}
-                        page={index + 1}
-                      />
-                    ) : null
-                )}
-              </section>
-            )}
-          </div>
+            <main role="main">
+              {article.id === null ? (
+                <div>Loading...</div>
+              ) : (
+                <section className="Article">
+                  <HeroSection article={article} />
+                  {article.sections.map(
+                    (section, index) =>
+                      section.acf_fc_layout === "image_section" ? (
+                        <ImageSection
+                          section={section}
+                          key={index}
+                          page={index + 1}
+                        />
+                      ) : section.acf_fc_layout === "quote_section" ? (
+                        <QuoteSection
+                          section={section}
+                          key={index}
+                          page={index + 1}
+                        />
+                      ) : null
+                  )}
+                </section>
+              )}
+            </main>
+          </React.Fragment>
         )}
       </ScrollContainer>
     );

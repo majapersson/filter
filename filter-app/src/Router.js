@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { injectGlobal, ThemeProvider } from "styled-components";
 
 import Article from "./pages/Article";
+import Home from "./pages/Home";
 
 injectGlobal`
   @font-face {
@@ -70,11 +71,15 @@ class Router extends Component {
     };
     return (
       <BrowserRouter>
-        <Switch>
-          <ThemeProvider theme={theme}>
-            <Route path="/:id" render={props => <Article {...props} />} />
-          </ThemeProvider>
-        </Switch>
+        <ThemeProvider theme={theme}>
+          <Switch>
+            <Route exact path="/" render={props => <Home {...props} />} />
+            <Route
+              path="/article/:id"
+              render={props => <Article {...props} />}
+            />
+          </Switch>
+        </ThemeProvider>
       </BrowserRouter>
     );
   }
