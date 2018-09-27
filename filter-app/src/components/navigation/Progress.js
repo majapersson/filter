@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import Play from "../icons/play";
 
 const Page = styled.span`
-  font-family: "Open Sans", sans-serif;
+  font-family: ${props =>
+    props.theme ? `${props.theme.fonts.sansSerif}` : "sans-serif"};
   font-weight: 300;
   span {
     font-size: 50%;
@@ -20,7 +22,6 @@ const ProgressBar = styled.div`
   flex-direction: column;
   height: 37.5vh;
   position: fixed;
-  bottom: 0;
   right: 62.5vw;
   align-items: center;
   flex-basis: 67%;
@@ -28,7 +29,9 @@ const ProgressBar = styled.div`
   width: 3rem;
   z-index: 2;
 
-  background-color: #fff;
+  background-color: ${props =>
+    props.theme ? props.theme.colors.light : "#fff"};
+  transition: all 300ms;
 `;
 
 export default class Progress extends Component {
@@ -37,7 +40,11 @@ export default class Progress extends Component {
     const page =
       Math.floor((this.props.progress / 100) * this.props.sections) + 1;
     return (
-      <ProgressBar className="Progress">
+      <ProgressBar
+        className="Progress"
+        style={{ bottom: progress > 1 ? "0" : "-31vh" }}
+      >
+        <Play style={{ paddingBottom: "2rem" }} />
         <Length>
           <div
             style={{
