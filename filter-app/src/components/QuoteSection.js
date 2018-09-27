@@ -9,7 +9,9 @@ const Section = styled.article`
 `;
 
 const Quote = styled.blockquote`
+  font-family: ${props => (props.theme ? props.theme.fonts.serif : "serif")};
   font-size: 2vw;
+  font-style: italic;
   font-weight: 700;
   line-height: 1.5;
   letter-spacing: 0.13rem;
