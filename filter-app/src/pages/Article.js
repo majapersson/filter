@@ -12,38 +12,14 @@ import { API_ROOT } from "../Helpers.js";
 
 export default class Article extends Component {
   state = {
-    article: {
-      id: null,
-      author: null,
-      magazine: null,
-      lead: null,
-      image: null,
-      sections: null
-    }
+    article: null
   };
 
   getData = async id => {
     const article = await fetch(`${API_ROOT}/articles/${id}`).then(data =>
       data.json()
     );
-    const { fields } = article;
-    this.setState({
-      article: {
-        id: article.ID,
-        title: article.post_title,
-        author: {
-          name: fields.author.post_title,
-          id: fields.author.ID
-        },
-        magazine: {
-          title: fields.magazine.post_title,
-          published: fields.magazine.published
-        },
-        lead: fields.lead,
-        image: fields.image,
-        sections: fields.sections
-      }
-    });
+    this.setState({ article });
   };
 
   componentWillMount() {
@@ -52,7 +28,6 @@ export default class Article extends Component {
 
   render() {
     const { article } = this.state;
-    console.log(article);
     return (
       <ScrollContainer>
         {({ progress }) => (
@@ -60,12 +35,10 @@ export default class Article extends Component {
             <Navigation user={"Peter Bartel"} />
             <Progress
               progress={progress}
-              sections={
-                article.sections !== null ? article.sections.length : ""
-              }
+              sections={article !== null ? article.sections.length : ""}
             />
             <main role="main">
-              {article.id === null ? (
+              {article === null ? (
                 <div>Loading...</div>
               ) : (
                 <section className="Article">
