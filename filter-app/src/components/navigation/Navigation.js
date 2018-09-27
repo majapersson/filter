@@ -17,14 +17,19 @@ const Nav = styled.nav`
 const Left = styled.div`
   display: flex;
   justify-content: space-between;
-  padding-left: 3rem;
+  padding-left: 2.5rem;
   width: 37.5vw;
 `;
 
-const StyledLogo = styled.svg`
-  margin-top: auto;
-  fill: ${props => (props.theme ? `${props.theme.colors.light}` : "#fff")};
-  width: 8.5rem;
+const StyledLogo = styled.div`
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 0.5rem;
+
+  svg {
+    fill: ${props => (props.theme ? `${props.theme.colors.light}` : "#fff")};
+    width: 8.5rem;
+  }
 `;
 
 const User = styled.div`
@@ -38,7 +43,9 @@ const User = styled.div`
     font-size: 75%;
     font-weight: 100;
     letter-spacing: 0.05rem;
+    line-height: 1;
     opacity: 0.33;
+    padding-bottom: 1rem;
     text-transform: uppercase;
   }
 `;
