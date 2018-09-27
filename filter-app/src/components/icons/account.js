@@ -1,7 +1,7 @@
 import React from "react";
 
 const Account = () => (
-  <svg width="16" height="16">
+  <svg viewBox="0 0 16 16">
     <path
       fill="#FFF"
       fillRule="nonzero"

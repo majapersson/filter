@@ -21,6 +21,10 @@ const Button = styled.div`
     letter-spacing: 0.13rem;
     margin-right: 1rem;
   }
+
+  svg {
+    width: 2rem;
+  }
 `;
 
 class HeroButton extends Component {

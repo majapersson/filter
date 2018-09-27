@@ -1,7 +1,7 @@
 import React from "react";
 
 const Comments = () => (
-  <svg width="24" height="16">
+  <svg viewBox="0 0 24 16">
     <path
       fill="#FFF"
       fillRule="nonzero"

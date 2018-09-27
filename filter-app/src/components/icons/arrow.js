@@ -1,7 +1,7 @@
 import React from "react";
 
 const Arrow = () => (
-  <svg width="32" height="32">
+  <svg viewBox="0 0 32 32">
     <path
       fill="#FFF"
       fillRule="evenodd"

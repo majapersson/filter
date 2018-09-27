@@ -1,7 +1,7 @@
 import React from "react";
 
 const X = () => (
-  <svg width="34" height="32">
+  <svg viewBox="0 0 34 32">
     <path
       fill="#FFF"
       fillRule="evenodd"
