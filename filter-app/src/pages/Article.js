@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 
 import ScrollContainer from "../components/HOC/ScrollContainer";
-import HeroSection from "../components/HeroSection";
-import QuoteSection from "../components/QuoteSection";
-import Progress from "../components/navigation/Progress";
 import Navigation from "../components/navigation/Navigation";
+import Progress from "../components/navigation/Progress";
+
+import HeroSection from "../components/HeroSection";
+import ImageSection from "../components/ImageSection";
+import QuoteSection from "../components/QuoteSection";
 
 import { API_ROOT } from "../Helpers.js";
 
@@ -15,6 +17,7 @@ export default class Article extends Component {
       author: null,
       magazine: null,
       lead: null,
+      image: null,
       sections: null
     }
   };
@@ -37,6 +40,7 @@ export default class Article extends Component {
           published: fields.magazine.published
         },
         lead: fields.lead,
+        image: fields.image,
         sections: fields.sections
       }
     });
@@ -60,18 +64,19 @@ export default class Article extends Component {
                 article.sections !== null ? article.sections.length : ""
               }
             />
-            <section className="Article">
-              {article.id === null ? (
-                <div>Loading...</div>
-              ) : (
-                article.sections.map((section, index) => {
-                  if (section.acf_fc_layout === "hero_section") {
+            {article.id === null ? (
+              <div>Loading...</div>
+            ) : (
+              <section className="Article">
+                <HeroSection article={article} />
+                {article.sections.map((section, index) => {
+                  if (section.acf_fc_layout === "image_section") {
                     return (
-                      <HeroSection
+                      <ImageSection
                         article={article}
                         section={section}
                         key={index}
-                        part={index + 1}
+                        page={index + 1}
                       />
                     );
                   } else if (section.acf_fc_layout === "quote_section") {
@@ -80,15 +85,15 @@ export default class Article extends Component {
                         article={article}
                         section={section}
                         key={index}
-                        part={index + 1}
+                        page={index + 1}
                       />
                     );
                   } else {
                     return null;
                   }
-                })
-              )}
-            </section>
+                })}
+              </section>
+            )}
           </div>
         )}
       </ScrollContainer>
