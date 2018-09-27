@@ -8,7 +8,7 @@ class ScrollContainer extends Component {
 
   handleScroll = () => {
     const { scrollHeight, scrollTop } = document.scrollingElement;
-    const progress = (scrollTop / scrollHeight) * 100;
+    const progress = (scrollTop / (scrollHeight - window.innerHeight)) * 100;
     this.setState({ progress });
   };
 
