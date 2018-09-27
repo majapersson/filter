@@ -7,12 +7,35 @@ import Article from "./pages/Article";
 const GlobalStyles = injectGlobal`
   @font-face {
     font-family: "National";
-    src: url("/assets/fonts/NationalWeb-Regular.ttf") format("truetype");
+    src: url("/assets/fonts/National-Regular.otf") format("opentype");
+    font-weight: 400;
   }
 
   @font-face {
-    font-family: "Tiempos Bold";
-    src: url("/assets/fonts/TiemposTextBold.ttf") format("truetype");
+    font-family: "National";
+    src: url("/assets/fonts/National-Light.otf") format("opentype");
+    font-weight: 100;
+  }
+
+  @font-face {
+    font-family: "National";
+    src: url("/assets/fonts/National-Bold.otf") format("opentype");
+    font-weight: 700;
+  }
+
+  @font-face {
+    font-family: "National LI";
+    src: url("/assets/fonts/National-ThinItalic.otf") format("opentype");
+  }
+
+  @font-face {
+    font-family: "Tiempos Headline";
+    src: url("/assets/fonts/TiemposHeadline-Black.otf") format("opentype");
+  }
+
+  @font-face {
+    font-family: "Tiempos Regular";
+    src: url("/assets/fonts/TiemposText-Regular.otf") format("opentype");
   }
 
   * {
@@ -36,7 +59,7 @@ class Router extends Component {
         fg: "#000"
       },
       fonts: {
-        serif: "Tiempos Bold, serif",
+        serif: "Tiempos Regular, serif",
         sansSerif: "National, sans-serif"
       },
       margins: {
