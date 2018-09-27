@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import styled from "styled-components";
 
 import Navigation from "../components/navigation/Navigation";
+import SlideWrapper from "../components/SlideWrapper";
+
 import { API_ROOT } from "../Helpers";
 
 const Main = styled.main`
@@ -34,6 +36,7 @@ export default class Home extends Component {
       <React.Fragment>
         <Navigation user={"Peter Bartel"} />
         <Main role="main">
+          {articles !== null ? <SlideWrapper articles={articles} /> : null}
         </Main>
       </React.Fragment>
     );
