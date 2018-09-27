@@ -12,7 +12,7 @@ const Page = styled.span`
 `;
 
 const Length = styled.div`
-  height: 100%;
+  height: 67.5%;
   width: 0.125rem;
   background-color: rgba(0, 0, 0, 0.1);
 `;
@@ -24,7 +24,6 @@ const ProgressBar = styled.div`
   position: fixed;
   right: 62.5vw;
   align-items: center;
-  flex-basis: 67%;
   padding: 0.75rem 0;
   width: 3rem;
   z-index: 2;
@@ -42,9 +41,9 @@ export default class Progress extends Component {
     return (
       <ProgressBar
         className="Progress"
-        style={{ bottom: progress > 1 ? "0" : "-31vh" }}
+        style={{ bottom: progress > 5 ? "0" : "-31vh" }}
       >
-        <Play style={{ paddingBottom: "2rem" }} />
+        <Play style={{ width: "1rem", paddingBottom: "1.5rem" }} />
         <Length>
           <div
             style={{
