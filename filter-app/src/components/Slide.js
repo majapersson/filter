@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+
+import HeroSection from "./HeroSection";
+
 const Image = styled.img`
   height: 12rem;
   position: relative;
@@ -16,7 +19,8 @@ const Image = styled.img`
 
 class Slide extends Component {
   render() {
-    const { article, toggle, expanded } = this.props;
+    const { article, toggleExpand, expanded } = this.props;
+    console.log(this);
     return (
       <React.Fragment>
         <Image
@@ -30,8 +34,11 @@ class Slide extends Component {
                 }
               : {}
           }
-          onClick={toggle}
+          onClick={toggleExpand}
         />
+        {expanded ? (
+          <HeroSection article={article} heroOpen closeHero={toggleExpand} />
+        ) : null}
       </React.Fragment>
     );
   }

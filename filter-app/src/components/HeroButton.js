@@ -29,10 +29,12 @@ const Button = styled.div`
 
 class HeroButton extends Component {
   render() {
-    const { title, url, close } = this.props;
+    const { title, toggle, url, close } = this.props;
     return (
       <Button>
-        <Link to={url}>{title}</Link>
+        <Link to={url} onClick={toggle ? e => toggle(e, url) : () => {}}>
+          {title}
+        </Link>
         {close ? <X /> : <Arrow />}
       </Button>
     );

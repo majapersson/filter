@@ -15,7 +15,7 @@ export default class Expand extends Component {
     const { children } = this.props;
     return children({
       expanded: this.state.expanded,
-      toggle: this.expand
+      toggleExpand: this.expand
     });
   }
 }

@@ -17,13 +17,12 @@ export default class SlideWrapper extends Component {
     return (
       <Wrapper>
         {articles.map(article => (
-          <Expand>
-            {({ expanded, toggle }) => (
+          <Expand key={article.id}>
+            {({ expanded, toggleExpand }) => (
               <Slide
                 article={article}
-                toggle={toggle}
+                toggleExpand={toggleExpand}
                 expanded={expanded}
-                key={article.id}
               />
             )}
           </Expand>

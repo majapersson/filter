@@ -9,3 +9,12 @@ export function throttle(fn, wait) {
     }
   };
 }
+
+export function delayLink(e, url) {
+  console.log("Delaying...");
+  e.preventDefault();
+
+  setTimeout(function() {
+    window.location = url;
+  }, 5000);
+}

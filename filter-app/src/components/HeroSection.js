@@ -3,6 +3,8 @@ import styled from "styled-components";
 
 import HeroButton from "./HeroButton";
 
+import { delayLink } from "../Helpers";
+
 const Hero = styled.article`
   display: flex;
   flex-direction: column;
@@ -95,11 +97,23 @@ const ButtonGroup = styled.div`
 
 export default class HeroSection extends Component {
   render() {
-    const { author, magazine, title, lead, image } = this.props.article;
+    const { article, heroOpen, closeHero } = this.props;
+    const { author, magazine, title, lead, image } = article;
+    console.log(article);
     return (
       <Hero
         className="HeroSection"
-        style={{ backgroundImage: `url(${image.sizes.large})` }}
+        style={
+          heroOpen
+            ? {
+                position: "absolute",
+                top: 0,
+                zIndex: 1
+              }
+            : {
+                backgroundImage: `url(${image.sizes.large})`
+              }
+        }
       >
         <Overlay className="Overlay" />
         <Topbar>
@@ -112,7 +126,7 @@ export default class HeroSection extends Component {
             </Magazine>
           </div>
           <ReadTime>
-            <span>Lästid:</span> 92min
+            <span>Lästid:</span> 92 min
           </ReadTime>
         </Topbar>
         <Main>
@@ -125,8 +139,17 @@ export default class HeroSection extends Component {
           </Lead>
         </Main>
         <ButtonGroup>
-          <HeroButton title={"Läs artikeln"} url={"#"} />
-          <HeroButton title={"Stäng"} url={"#"} close={true} />
+          <HeroButton
+            title={heroOpen ? "Läs artikeln" : "Scrolla ner"}
+            url={heroOpen ? `/article/${article.id}` : "#"}
+            toggle={heroOpen ? delayLink : () => {}}
+          />
+          <HeroButton
+            title={"Stäng"}
+            url={"#"}
+            close
+            toggle={heroOpen ? closeHero : () => {}}
+          />
         </ButtonGroup>
       </Hero>
     );
