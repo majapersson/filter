@@ -1,5 +1,98 @@
+@font-face {
+  font-family: "National";
+  src: url("/assets/fonts/National-Regular.otf") format("opentype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "National";
+  src: url("/assets/fonts/National-Light.otf") format("opentype");
+  font-weight: 100;
+}
+
+@font-face {
+  font-family: "National";
+  src: url("/assets/fonts/National-Bold.otf") format("opentype");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "National LI";
+  src: url("/assets/fonts/National-ThinItalic.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Tiempos Headline";
+  src: url("/assets/fonts/TiemposHeadline-Black.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Tiempos Regular";
+  src: url("/assets/fonts/TiemposText-Regular.otf") format("opentype");
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+
+  color: #333;
+  font-family: "National", sans-serif;
+  line-height: 1.75;
+}
+
+@keyframes open-art-img {
+  100% {
+    width: 37.5vw;
+    height: 24rem;
+    transform: translate(-9.375vw, -6rem);
+  }
+}
+
+@keyframes close-art-img {
+  100% {
+    z-index: 0;
+    width: 18.75vw;
+    height: 12rem;
+    transform: translate(0vw, 0rem);
+  }
+}
+
+@keyframes fullscreen-art-img {
+  99% {
+    width: 100vw;
+    height: 100vh;
+    transform: translate(0vw, 0rem);
+  }
+  100% {
+    background-attachment: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0px;
+    left: 0px;
+    transform: translate(0vw, 0rem);
+  }
+}
+
+@keyframes slide-in {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0rem);
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
