@@ -1,18 +1,16 @@
-import React, { Component } from "react";
 import styled from "styled-components";
 
-const StyledHighlight = styled.section`
+export const StyledHighlight = styled.article`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  flex-basis: 37.5%;
+  flex-basis: 12.8%;
   flex-shrink: 0;
   height: 100vh;
-  min-width: 37.5vw;
-  padding: 0 6rem 0 3rem;
   position: sticky;
   top: 0;
   left: 0;
+  width: 3rem;
 
   background-color: black;
   color: white;
@@ -33,10 +31,12 @@ const StyledHighlight = styled.section`
       text-align: ${props.align};
     `
       : ""};
-`;
 
-export default class Highlight extends Component {
-  render() {
-    return <StyledHighlight {...this.props} />;
+  ${props => props.expanded && "width: 100%"};
+
+  @media (min-width: 400px) {
+    flex-basis: 37.5%;
+    min-width: 37.5vw;
+    padding: 0 6rem 0 3rem;
   }
-}
+`;
