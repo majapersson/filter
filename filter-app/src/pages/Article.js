@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 
 import ScrollContainer from "../components/HOC/ScrollContainer";
+import Expand from "../components/HOC/Expand";
 import Navigation from "../components/navigation/Navbar";
 import Progress from "../components/navigation/Progress";
+import Settings from "../components/navigation/Settings";
 
 import Hero from "../components/Hero";
 import ImageSection from "../components/ImageSection";
@@ -32,11 +34,26 @@ export default class Article extends Component {
       <ScrollContainer>
         {({ progress }) => (
           <React.Fragment>
-            <Navigation user={"Peter Bartel"} />
-            <Progress
-              progress={progress}
-              sections={article !== null ? article.sections.length : ""}
-            />
+            <Navigation transparent />
+            <Expand>
+              {({ expanded, toggleExpand }) => (
+                <React.Fragment>
+                  <Progress
+                    progress={progress}
+                    sections={article !== null ? article.sections.length : ""}
+                    toggleSettings={toggleExpand}
+                  />
+                  {article && (
+                    <Settings
+                      article={article}
+                      expanded={expanded}
+                      close={toggleExpand}
+                      progress={progress}
+                    />
+                  )}
+                </React.Fragment>
+              )}
+            </Expand>
             <main role="main">
               {article === null ? null : (
                 <section className="Article">

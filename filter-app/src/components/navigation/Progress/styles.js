@@ -38,7 +38,7 @@ export const ProgressBar = styled.div`
     props.theme ? props.theme.colors.light : "#fff"};
   transition: all 300ms;
 
-  ${props => props.progress < 5 && "bottom: -37.5vh"};
+  ${props => props.progress < 3 && "bottom: -37.5vh"};
 
   @media (max-width: 400px) {
     right: auto;
