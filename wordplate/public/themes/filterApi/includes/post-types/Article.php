@@ -70,6 +70,12 @@ add_action('init', function() {
                     'name'          => 'image_section',
                     'label'         => __('Section with image'),
                     'sub_fields'    => [
+                        acf_text([
+                            'name' => 'title',
+                            'label' => __('Title'),
+                            'instructions' => __('Add the section title.'),
+                            'required' => true,
+                        ]),
                         acf_wysiwyg([
                             'name' => 'content',
                             'label' => __('Content'),
@@ -91,6 +97,12 @@ add_action('init', function() {
                     'name'          => 'quote_section',
                     'label'         => __('Section with quote'),
                     'sub_fields'    => [
+                        acf_text([
+                            'name' => 'title',
+                            'label' => __('Title'),
+                            'instructions' => __('Add the section title.'),
+                            'required' => true,
+                        ]),
                         acf_wysiwyg([
                             'name' => 'content',
                             'label' => __('Content'),
