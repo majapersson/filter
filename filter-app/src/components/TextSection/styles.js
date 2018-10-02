@@ -4,19 +4,37 @@ export const Text = styled.article`
   display: flex;
   justify-content: center;
   padding: 12.5vh 0;
+  position: relative;
   width: 100vw;
 
-  background-color: ${props => (props.theme ? props.theme.colors.bg : "#fff")};
-  color: ${props => (props.theme ? props.theme.colors.fg : "#000")};
+  background-color: ${props => props.theme && props.theme.colors.bg};
+  color: ${props => props.theme && props.theme.colors.fg};
   overflow: hidden;
 
   ${props => props.expanded && "width: 0px"};
 `;
 
+export const Header = styled.div`
+  height: 4.5rem;
+  position: absolute;
+  top: 0;
+  width: 100%;
+
+  background-color: ${props => props.theme && props.theme.colors.bg};
+  background-image: linear-gradient(
+    ${props => props.theme && props.theme.colors.bg},
+    transparent 90%
+  );
+`;
+
 export const Content = styled.div`
+  max-width: 87.2%;
   padding: 0 0.5rem 0 1.5rem;
 
   font-family: ${props => (props.theme ? props.theme.fonts.serif : "serif")};
+  font-size: ${props =>
+    props.theme ? `${props.theme.fonts.size}rem` : "1rem"};
+  line-height: ${props => props.theme && props.theme.fonts.height};
 
   @media (min-width: 400px) {
     margin-left: 3rem;
@@ -24,7 +42,6 @@ export const Content = styled.div`
     max-width: 37.5rem;
   }
 
-  h1,
   h2,
   h3,
   h4,
@@ -35,23 +52,15 @@ export const Content = styled.div`
   }
 
   h2 {
-    font-size: 1.5rem;
-    line-height: 2rem;
-
-    @media (min-width: 400px) {
-      font-size: 2rem;
-      line-height: 2.5rem;
-    }
+    font-size: ${props =>
+      props.theme ? `${props.theme.fonts.size * 1.5}rem` : "1.5rem"};
+    line-height: 1.4;
   }
 
   h3 {
-    font-size: 1.25rem;
-    line-height: 1.5rem;
-
-    @media (min-width: 400px) {
-      font-size: 1.5rem;
-      line-height: 2rem;
-    }
+    font-size: ${props =>
+      props.theme ? `${props.theme.fonts.size * 1.25}rem` : "1.25rem"};
+    line-height: 1.2;
   }
 
   blockquote {
@@ -65,9 +74,6 @@ export const Content = styled.div`
     &:after {
       font-style: normal;
       opacity: 0.33;
-      @media (min-width: 400px) {
-        font-size: 4rem;
-      }
     }
 
     &:before {
