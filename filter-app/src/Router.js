@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 
-import Navigation from "./components/navigation/Navbar/Navigation";
 import Article from "./pages/Article";
 import Home from "./pages/Home";
 

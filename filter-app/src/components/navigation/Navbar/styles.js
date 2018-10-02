@@ -6,17 +6,16 @@ export const Nav = styled.nav`
   height: 4.5rem;
   position: fixed;
   width: 100%;
-  z-index: 2;
+  z-index: 3;
 
   @media (min-width: 400px) {
     height: 6rem;
   }
 `;
 
-export const Left = styled.div`
+export const Right = styled.div`
   display: flex;
-  justify-content: space-between;
-  padding-left: 1rem;
+  justify-content: flex-end;
 
   @media (min-width: 400px) {
     padding-left: 2.5rem;
@@ -29,6 +28,7 @@ export const StyledLogo = styled.a`
   align-items: flex-end;
   padding-bottom: 0.5rem;
   height: 100%;
+  margin-left: 0.5rem;
 
   svg {
     fill: ${props => (props.theme ? `${props.theme.colors.light}` : "#fff")};
