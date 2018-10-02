@@ -53,6 +53,8 @@ add_action( 'rest_api_init', function () {
                     'published' => get_field('published', $post->fields['magazine']->ID),
                 ],
                 'lead' => $post->fields['lead'],
+                'photo' => $post->fields['photo'],
+                'type' => $post->fields['type'],
                 'image' => $post->fields['image'],
                 'sections' => $post->fields['sections'],
             ];

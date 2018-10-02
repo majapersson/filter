@@ -37,6 +37,18 @@ add_action('init', function() {
             'allow_null' => false,
             'multiple' => false,
         ]),
+        acf_text([
+            'name' => 'photo',
+            'label' => __('Photographer'),
+            'instructions' => __('Add the photographer for the article.'),
+            'required' => true,
+        ]),
+        acf_text([
+            'name' => 'type',
+            'label' => __('Type'),
+            'instructions' => __('Add the type of article.'),
+            'required' => true,
+        ]),
         acf_textarea([
             'name' => 'lead',
             'label' => __('Lead paragraph'),
