@@ -6,7 +6,6 @@ import Slide from "./Slide";
 
 const Wrapper = styled.section`
   display: flex;
-  flex-wrap: wrap;
   background-color: ${props =>
     props.theme ? props.theme.colors.dark : "#000"};
 `;
