@@ -22,6 +22,7 @@ export const StyledHighlight = styled.article`
     background-image: url('${props.image}');
     background-size: cover;
     background-attachment: fixed;
+    background-position: center center;
     `
       : ""};
 
@@ -32,7 +33,12 @@ export const StyledHighlight = styled.article`
     `
       : ""};
 
-  ${props => props.expanded && "width: 100%"};
+  ${props =>
+    props.expanded &&
+    `
+    background-size: cover;
+    flex-basis: 100%;
+    `};
 
   @media (min-width: 400px) {
     flex-basis: 37.5%;

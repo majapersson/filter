@@ -4,13 +4,13 @@ export const Text = styled.article`
   display: flex;
   justify-content: center;
   padding: 12.5vh 0;
-  width: 100%;
+  width: 100vw;
 
   background-color: ${props => (props.theme ? props.theme.colors.bg : "#fff")};
   color: ${props => (props.theme ? props.theme.colors.fg : "#000")};
+  overflow: hidden;
 
-  @media (min-width: 400px) {
-  }
+  ${props => props.expanded && "width: 0px"};
 `;
 
 export const Content = styled.div`
@@ -72,7 +72,6 @@ export const Content = styled.div`
 
     &:before {
       content: "» ";
-      margin-right: 1rem;
     }
 
     &:after {

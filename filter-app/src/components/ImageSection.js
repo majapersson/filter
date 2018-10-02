@@ -16,21 +16,21 @@ export default class ImageSection extends Component {
     return (
       <Section className="ImageSection" id={`page-${page}`}>
         <Expand>
-          {({ expanded, toggle }) => (
-            <Highlight
-              image={section.image.url}
-              align={"right"}
-              className="Highlight"
-              style={{
-                justifyContent: "flex-start",
-                flexBasis: expanded ? "100%" : "37.5%"
-              }}
-            >
-              <ExpandButton toggle={toggle} expanded={expanded} />
-            </Highlight>
+          {({ expanded, toggleExpand }) => (
+            <React.Fragment>
+              <Highlight
+                image={section.image.url}
+                align={"right"}
+                className="Highlight"
+                expanded={expanded}
+                toggle={toggleExpand}
+              >
+                <ExpandButton toggle={toggleExpand} expanded={expanded} />
+              </Highlight>
+              <TextSection content={section.content} />
+            </React.Fragment>
           )}
         </Expand>
-        <TextSection content={section.content} />
       </Section>
     );
   }
