@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 
 import ScrollContainer from "../components/HOC/ScrollContainer";
-import Navigation from "../components/navigation/Navigation";
+import Navigation from "../components/navigation/Navbar/Navigation";
 import Progress from "../components/navigation/Progress";
 
-import HeroSection from "../components/HeroSection";
+import Hero from "../components/Hero";
 import ImageSection from "../components/ImageSection";
 import QuoteSection from "../components/QuoteSection";
 
@@ -38,11 +38,9 @@ export default class Article extends Component {
               sections={article !== null ? article.sections.length : ""}
             />
             <main role="main">
-              {article === null ? (
-                <div>Loading...</div>
-              ) : (
+              {article === null ? null : (
                 <section className="Article">
-                  <HeroSection article={article} />
+                  <Hero article={article} />
                   {article.sections.map(
                     (section, index) =>
                       section.acf_fc_layout === "image_section" ? (

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
-import Navigation from "../components/navigation/Navigation";
+import Navigation from "../components/navigation/Navbar/Navigation";
 import SlideWrapper from "../components/SlideWrapper";
 
 import { API_ROOT } from "../Helpers";
@@ -9,6 +9,7 @@ import { API_ROOT } from "../Helpers";
 const Main = styled.main`
   padding-top: 12rem;
   min-height: 100vh;
+  overflow: hidden;
 
   background-color: ${props =>
     props.theme ? props.theme.colors.dark : "#000"};
