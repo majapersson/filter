@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import ScrollContainer from "../components/HOC/ScrollContainer";
-import Navigation from "../components/navigation/Navbar/Navigation";
+import Navigation from "../components/navigation/Navbar";
 import Progress from "../components/navigation/Progress";
 
 import Hero from "../components/Hero";

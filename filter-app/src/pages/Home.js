@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
-import Navigation from "../components/navigation/Navbar/Navigation";
+import Navigation from "../components/navigation/Navbar";
 import SlideWrapper from "../components/SlideWrapper";
 
 import { API_ROOT } from "../Helpers";
