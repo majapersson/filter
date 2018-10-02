@@ -16,7 +16,9 @@ class Router extends Component {
       },
       fonts: {
         serif: "Tiempos Regular, serif",
-        sansSerif: "National, sans-serif"
+        sansSerif: "National, sans-serif",
+        size: 1,
+        height: 1.75
       },
       margins: {
         small: "1rem",
