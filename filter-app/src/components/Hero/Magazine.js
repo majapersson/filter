@@ -9,7 +9,7 @@ const Style = styled.p`
   margin: 0;
 `;
 
-const Line = styled.div`
+const Line = styled.span`
   display: inline-block;
   height: 1px;
   margin: 0 0.5rem;

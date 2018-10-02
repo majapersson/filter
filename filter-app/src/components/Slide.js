@@ -42,7 +42,6 @@ const Image = styled.img`
 class Slide extends Component {
   render() {
     const { article, toggleExpand, expanded } = this.props;
-    console.log(expanded);
     return (
       <React.Fragment>
         <Expand>
@@ -54,7 +53,7 @@ class Slide extends Component {
                 onClick={toggleExpand}
                 fullWidth={fullWidth}
               />
-              {expanded ? (
+              {expanded && (
                 <Hero
                   article={article}
                   heroOpen
@@ -62,7 +61,7 @@ class Slide extends Component {
                   toggleFull={toggleFull}
                   fullWidth={fullWidth}
                 />
-              ) : null}
+              )}
             </React.Fragment>
           )}
         </Expand>

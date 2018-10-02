@@ -1,13 +1,5 @@
 import React, { Component } from "react";
-import {
-  Author,
-  Info,
-  HeroSection,
-  Main,
-  Overlay,
-  ReadTime,
-  Title
-} from "./styles";
+import { Info, HeroSection, Main, Overlay, Title } from "./styles";
 
 import ArrowButton from "./ArrowButton";
 import CloseButton from "./CloseButton";
@@ -42,13 +34,13 @@ export default class Hero extends Component {
         <Overlay className="Overlay" />
         <Main>
           <Magazine magazine={magazine} />
-          <Title className="Title" style={heroOpen ? { opacity: 0 } : {}}>
+          <Title className="Title" style={heroOpen && { opacity: 0 }}>
             {title}
           </Title>
           <ArrowButton
             title={heroOpen ? "Läs artikeln" : "Scrolla ner"}
             url={heroOpen ? `/article/${article.id}` : "#"}
-            toggle={heroOpen ? this.delayLink : () => {}}
+            toggle={heroOpen && this.delayLink}
           />
           <CloseButton
             url={heroOpen ? "#" : "/"}
@@ -66,11 +58,11 @@ export default class Hero extends Component {
             <p>
               <span>Text:</span> {author.name}
             </p>
-            {photo ? (
+            {photo && (
               <p>
                 <span>Foto: </span> {photo}
               </p>
-            ) : null}
+            )}
           </div>
         </Info>
       </HeroSection>
