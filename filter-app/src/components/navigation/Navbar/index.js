@@ -1,28 +1,27 @@
 import React, { Component } from "react";
-import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 import { Logo, SmallLogo } from "../../Logo";
 import Account from "../../icons/account";
 import Menu from "../../icons/menu";
-import X from "../../icons/x";
 
-import { Nav, Right, StyledLogo, User, Tab } from "./styles.js";
+import { Nav, Right, StyledLogo, Tab } from "./styles.js";
 
 class Navigation extends Component {
   render() {
-    const { user } = this.props;
     return (
       <Nav>
         <StyledLogo href="/">
           {window.innerWidth < 400 ? <SmallLogo /> : <Logo />}
         </StyledLogo>
         <Right>
-          <Tab transparent>
+          <Tab transparent={this.props.transparent}>
             <Account />
           </Tab>
-          <Tab transparent>
-            <Menu />
-            {/*<X style={{ width: "1rem" }} />*/}
+          <Tab transparent={this.props.transparent}>
+            <Link to="/">
+              <Menu />
+            </Link>
           </Tab>
         </Right>
       </Nav>

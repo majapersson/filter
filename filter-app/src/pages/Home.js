@@ -35,7 +35,7 @@ export default class Home extends Component {
     const { articles } = this.state;
     return (
       <React.Fragment>
-        <Navigation user={"Peter Bartel"} />
+        <Navigation />
         <Main role="main">
           {articles !== null ? <SlideWrapper articles={articles} /> : null}
         </Main>

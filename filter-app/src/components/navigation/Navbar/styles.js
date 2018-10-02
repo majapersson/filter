@@ -40,28 +40,6 @@ export const StyledLogo = styled.a`
   }
 `;
 
-export const User = styled.div`
-  display: flex;
-  align-items: flex-end;
-  height: 100%;
-  margin-left: 2rem;
-
-  span {
-    color: ${props => (props.theme ? `${props.theme.colors.light}` : "#fff")};
-    font-size: 75%;
-    font-weight: 100;
-    letter-spacing: 0.05rem;
-    line-height: 1;
-    opacity: 0.33;
-    padding-bottom: 1rem;
-    text-transform: uppercase;
-
-    @media (max-width: 400px) {
-      display: none;
-    }
-  }
-`;
-
 export const Tab = styled.div`
   display: flex;
   align-items: flex-end;
@@ -70,13 +48,17 @@ export const Tab = styled.div`
   margin-left: 1rem;
 
   background-color: ${props =>
-    props.transparent ? "transparent" : `${props.theme.colors.dark}`};
+    props.transparent ? "transparent" : `${props.theme.colors.fg}`};
 
   svg {
     width: 1rem;
 
-    path {
-      ${props => (props.transparent ? `fill: ${props.theme.colors.dark}` : "")};
+    path,
+    g {
+      ${props =>
+        props.transparent
+          ? `fill: ${props.theme.colors.fg}`
+          : `fill: ${props.theme.colors.bg}`};
     }
   }
 `;
