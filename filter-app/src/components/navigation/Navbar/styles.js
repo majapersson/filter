@@ -33,10 +33,6 @@ export const StyledLogo = styled.a`
   svg {
     fill: ${props => (props.theme ? `${props.theme.colors.light}` : "#fff")};
     width: 2rem;
-
-    @media (min-width: 400px) {
-      width: 8.5rem;
-    }
   }
 `;
 
