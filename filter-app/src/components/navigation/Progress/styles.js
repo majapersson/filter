@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { COLORS, FONTS } from "../../../Helpers";
 
 export const Length = styled.div`
   height: 67.5%;
@@ -6,14 +7,12 @@ export const Length = styled.div`
   background-color: rgba(0, 0, 0, 0.1);
 
   div {
-    background-color: ${props =>
-      props.theme ? props.theme.colors.dark : "#000"};
+    background-color: ${COLORS.dark};
   }
 `;
 
 export const Page = styled.span`
-  font-family: ${props =>
-    props.theme ? `${props.theme.fonts.sansSerif}` : "sans-serif"};
+  font-family: ${FONTS.sansSerif};
   font-size: 1.25rem;
   font-weight: 300;
   span {
@@ -33,7 +32,6 @@ export const ProgressBar = styled.div`
   width: 3rem;
   z-index: 2;
 
-  background-color: ${props =>
-    props.theme ? props.theme.colors.light : "#fff"};
+  background-color: ${COLORS.light};
   transition: all 300ms;
 `;

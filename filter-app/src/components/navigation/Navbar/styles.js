@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { COLORS } from "../../../Helpers";
 
 export const Nav = styled.nav`
   display: flex;
@@ -31,7 +32,7 @@ export const StyledLogo = styled.a`
   margin-left: 0.5rem;
 
   svg {
-    fill: ${props => (props.theme ? `${props.theme.colors.light}` : "#fff")};
+    fill: ${COLORS.light};
     width: 2rem;
   }
 `;
@@ -44,7 +45,7 @@ export const Tab = styled.div`
   margin-left: 1rem;
 
   background-color: ${props =>
-    props.transparent ? "transparent" : `${props.theme.colors.fg}`};
+    props.transparent ? "transparent" : `${COLORS.fg}`};
 
   svg {
     width: 1rem;
@@ -52,9 +53,7 @@ export const Tab = styled.div`
     path,
     g {
       ${props =>
-        props.transparent
-          ? `fill: ${props.theme.colors.fg}`
-          : `fill: ${props.theme.colors.bg}`};
+        props.transparent ? `fill: ${COLORS.fg}` : `fill: ${COLORS.bg}`};
     }
   }
 `;

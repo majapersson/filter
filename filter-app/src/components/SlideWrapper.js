@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import { COLORS } from "../Helpers";
 
 import Expand from "./HOC/Expand";
 import Slide from "./Slide";
 
 const Wrapper = styled.section`
   display: flex;
-  background-color: ${props =>
-    props.theme ? props.theme.colors.dark : "#000"};
+  background-color: ${COLORS.dark};
 `;
 
 export default class SlideWrapper extends Component {

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import { COLORS, FONTS } from "../Helpers";
 
 const Button = styled.button`
   height: 3rem;
@@ -11,11 +12,10 @@ const Button = styled.button`
   background-color: transparent;
   border: none;
   color: #000;
-  font: 1rem ${props => props.theme && props.theme.fonts.sansSerif};
+  font: 1rem ${FONTS.sansSerif};
   transition: bottom 300ms;
 
-  ${props =>
-    !props.clicked && `background-color: ${props.theme.colors.accent};`};
+  ${props => !props.clicked && `background-color: ${COLORS.accent};`};
 `;
 
 export default class ExpandButton extends Component {

@@ -1,4 +1,21 @@
+// CONSTANTS
+
 export const API_ROOT = process.env.REACT_APP_API_ROOT;
+
+export const COLORS = {
+  accent: "#FFDD1F",
+  dark: "#000",
+  light: "#fff",
+  bg: "#fff",
+  fg: "#000"
+};
+
+export const FONTS = {
+  serif: "Tiempos Regular, serif",
+  sansSerif: "National, sans-serif"
+};
+
+// FUNCTIONS
 
 export const throttle = (fn, delay) => {
   let lastCall = 0;

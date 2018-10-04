@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import { COLORS } from "../../../Helpers";
 
 import Chapters from "./Chapters";
 import Header from "./Header";
@@ -16,7 +17,7 @@ export const Container = styled.aside`
   width: 100%;
   z-index: 3;
 
-  background-color: ${props => props.theme && props.theme.colors.light};
+  background-color: ${COLORS.light};
   ${props => props.expanded && "transform: translate(0, 0)"};
 `;
 

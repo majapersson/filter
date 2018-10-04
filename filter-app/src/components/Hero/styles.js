@@ -1,15 +1,5 @@
 import styled from "styled-components";
-
-export const Author = styled.p`
-  text-transform: uppercase;
-  margin: 0;
-
-  i {
-    font-family: "National LI", sans-serif;
-    opacity: 0.67;
-    text-transform: none;
-  }
-`;
+import { COLORS } from "../../Helpers";
 
 export const Button = styled.div`
   display: flex;
@@ -21,7 +11,7 @@ export const Button = styled.div`
   span {
     display: inline-block;
     border-bottom: 0.25rem solid #fff;
-    color: ${props => (props.theme ? `${props.theme.colors.light}` : "#fff")};
+    color: ${COLORS.light};
     font-size: 5vw;
     font-weight: 700;
     text-decoration: none;
@@ -45,7 +35,7 @@ export const HeroSection = styled.article`
   padding: 0 1rem 0.5rem 4rem;
   z-index: 2;
 
-  color: ${props => (props.theme ? `${props.theme.colors.light}` : "#fff")}
+  color: ${COLORS.light}
   background-attachment: fixed;
   background-size: cover;
   background-position: center center;
@@ -74,7 +64,7 @@ export const Info = styled.div`
   position: relative;
   width: 100%;
 
-  color: ${props => props.theme && `${props.theme.colors.light}`};
+  color: ${COLORS.light};
   font-size: 0.75rem;
   letter-spacing: 0.02rem;
   text-transform: uppercase;
@@ -111,14 +101,6 @@ export const Overlay = styled.div`
   left: 0;
   z-index: 0;
   background-color: rgba(0, 0, 0, 0.3);
-`;
-
-export const ReadTime = styled.div`
-  font-weight: 100;
-
-  span {
-    opacity: 0.67;
-  }
 `;
 
 export const Title = styled.h1`

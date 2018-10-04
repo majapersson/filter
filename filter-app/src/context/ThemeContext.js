@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import { colors } from "../Helpers";
+import { COLORS } from "../Helpers";
 
 const theme = {
   colors: {
-    bg: colors.bg,
-    fg: colors.fg
+    bg: COLORS.bg,
+    fg: COLORS.fg
   },
   font: {
     size: 1,
@@ -14,7 +14,7 @@ const theme = {
 
 const ThemeContext = React.createContext();
 
-export class ContextProvider extends Component {
+export class ThemeProvider extends Component {
   state = { ...theme };
 
   handleSettings = (setting, value) => {

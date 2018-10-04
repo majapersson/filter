@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import TextSlider from "./TextSlider";
 import ThemeContext from "../../../context/ThemeContext";
+import { COLORS } from "../../../Helpers";
 
 import X from "../../icons/x";
 import size from "../../icons/size";
@@ -9,14 +10,13 @@ import spacing from "../../icons/spacing";
 import brightness from "../../icons/brightness";
 
 const Close = styled.div`
+  background-color: ${COLORS.dark};
   height: 3rem;
   padding: 0.5rem;
   position: absolute;
   bottom: 0;
   right: 0;
   width: 3rem;
-
-  ${props => props.theme && `background-color: ${props.theme.colors.dark}`};
 `;
 
 const Wrapper = styled.div`

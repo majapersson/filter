@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { COLORS, FONTS } from "../../Helpers";
 
 export const Text = styled.article`
   display: flex;
@@ -15,7 +16,7 @@ export const Content = styled.div`
   padding: 0 0.5rem 0 1.5rem;
   width: 100%;
 
-  font-family: ${props => props.theme && props.theme.fonts.serif};
+  font-family: ${FONTS.serif};
   font-size: ${props => props.font && `${props.font.size}rem`};
   line-height: ${props => props.font && props.font.spacing};
 
@@ -24,8 +25,7 @@ export const Content = styled.div`
   h4,
   h5,
   h6 {
-    font-family: ${props =>
-      props.theme ? props.theme.fonts.sansSerif : "sans-serif"};
+    font-family: ${FONTS.sansSerif};
   }
 
   h2 {
@@ -66,7 +66,7 @@ export const Content = styled.div`
   }
 
   a {
-    background-color: ${props => props.theme && props.theme.colors.accent};
+    background-color: ${COLORS.accent};
     color: inherit;
     text-decoration: none;
   }

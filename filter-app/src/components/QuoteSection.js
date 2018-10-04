@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import { FONTS } from "../Helpers";
 
 import TextSection from "./TextSection";
 import Highlight from "./Highlight";
@@ -9,7 +10,7 @@ const Section = styled.article`
 `;
 
 const Quote = styled.blockquote`
-  font-family: ${props => (props.theme ? props.theme.fonts.serif : "serif")};
+  font-family: ${FONTS.serif};
   font-size: 2vw;
   font-style: italic;
   font-weight: 700;

@@ -12,7 +12,7 @@ class Navigation extends Component {
     return (
       <Nav>
         <StyledLogo href="/">
-          {window.innerWidth < 400 ? <SmallLogo /> : <Logo />}
+          <SmallLogo />
         </StyledLogo>
         <Right>
           <Tab transparent={this.props.transparent}>

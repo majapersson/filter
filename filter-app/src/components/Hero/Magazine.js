@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { COLORS } from "../../Helpers";
 
 const Style = styled.p`
   font-weight: 400;
@@ -16,7 +17,7 @@ const Line = styled.span`
   vertical-align: middle;
   width: 1.5rem;
 
-  background-color: ${props => props.color && props.theme.colors[props.color]};
+  background-color: ${props => COLORS[props.color]};
   opacity: 0.67;
 `;
 

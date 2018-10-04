@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { COLORS } from "../../../Helpers";
 
 const ChapterList = styled.ul`
   flex-grow: 2;
@@ -25,8 +26,8 @@ const Chapter = styled.li`
     ` font-weight: 700;
 
       span {
-        background: ${props.theme.colors.dark};
-        color: ${props.theme.colors.light};
+        background: ${COLORS.dark};
+        color: ${COLORS.light};
       }
     `};
 `;
@@ -37,11 +38,7 @@ const Page = styled.span`
   justify-content: center;
   height: 100%;
   width: 3rem;
-  ${props =>
-    props.theme &&
-    `
-  color: ${props.theme.colors.dark};
-  `};
+  color: ${COLORS.dark};
 `;
 
 const Chapters = ({ article, page }) => (
