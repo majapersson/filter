@@ -16,11 +16,11 @@ const Line = styled.span`
   vertical-align: middle;
   width: 1.5rem;
 
-  background-color: ${props => props.theme.colors.light};
+  background-color: ${props => props.color && props.theme.colors[props.color]};
   opacity: 0.67;
 `;
 
-const Magazine = ({ magazine }) => (
+const Magazine = ({ magazine, color }) => (
   <Style>
     {window.innerWidth > 400 ? (
       <React.Fragment>
@@ -28,7 +28,7 @@ const Magazine = ({ magazine }) => (
       </React.Fragment>
     ) : (
       <React.Fragment>
-        #{magazine.title} <Line /> {magazine.published}
+        #{magazine.title} <Line color={color} /> {magazine.published}
       </React.Fragment>
     )}
   </Style>

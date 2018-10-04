@@ -1,9 +1,10 @@
 import React, { Component } from "react";
+import { colors } from "../Helpers";
 
 const theme = {
   colors: {
-    bg: "#fff",
-    fg: "#000"
+    bg: colors.bg,
+    fg: colors.fg
   },
   font: {
     size: 1,

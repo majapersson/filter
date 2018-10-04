@@ -5,6 +5,7 @@ import { ThemeProvider } from "styled-components";
 import Article from "./pages/Article";
 import Home from "./pages/Home";
 import { ContextProvider } from "./ThemeContext";
+import { ContextProvider } from "./context/ThemeContext";
 
 class Router extends Component {
   render() {

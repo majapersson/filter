@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import TextSlider from "./TextSlider";
-import ThemeContext from "../../../ThemeContext";
+import ThemeContext from "../../../context/ThemeContext";
 
 import X from "../../icons/x";
 import size from "../../icons/size";
@@ -35,7 +35,7 @@ const Demo = styled.p`
   flex-shrink: 0;
 `;
 
-class SettingsFooter extends Component {
+class Footer extends Component {
   render() {
     const { close } = this.props;
     return (
@@ -76,4 +76,4 @@ class SettingsFooter extends Component {
   }
 }
 
-export default SettingsFooter;
+export default Footer;

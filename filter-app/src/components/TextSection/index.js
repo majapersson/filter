@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import ReactHtmlParser from "react-html-parser";
 import { Content, Text } from "./styles";
 
-import ThemeContext from "../../ThemeContext";
+import ThemeContext from "../../context/ThemeContext";
 
 class TextSection extends Component {
   render() {

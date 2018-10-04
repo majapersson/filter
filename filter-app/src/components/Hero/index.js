@@ -33,7 +33,7 @@ export default class Hero extends Component {
       >
         <Overlay className="Overlay" />
         <Main>
-          <Magazine magazine={magazine} />
+          <Magazine magazine={magazine} color={"light"} />
           <Title className="Title" style={heroOpen && { opacity: 0 }}>
             {title}
           </Title>

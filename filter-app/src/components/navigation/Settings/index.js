@@ -1,24 +1,33 @@
 import React, { Component } from "react";
+import styled from "styled-components";
 
-import { Container, Header, Image, Title } from "./styles";
 import Chapters from "./Chapters";
-import SettingsFooter from "./SettingsFooter";
-import Magazine from "../../Hero/Magazine";
+import Header from "./Header";
+import Footer from "./Footer";
+
+export const Container = styled.aside`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  transform: translate(-100%, 100%);
+  transition: transform 500ms cubic-bezier(0.5, 0, 0, 1);
+  width: 100%;
+  z-index: 3;
+
+  background-color: ${props => props.theme && props.theme.colors.light};
+  ${props => props.expanded && "transform: translate(0, 0)"};
+`;
 
 class Settings extends Component {
   render() {
     const { article, expanded, close, page } = this.props;
     return (
       <Container expanded={expanded}>
-        <Header>
-          <Image src={article.image.sizes.thumbnail} />
-          <div>
-            <Title>{article.title}</Title>
-            <Magazine magazine={article.magazine} />
-          </div>
-        </Header>
+        <Header article={article} />
         <Chapters article={article} page={page} />
-        <SettingsFooter close={close} />
+        <Footer close={close} />
       </Container>
     );
   }
