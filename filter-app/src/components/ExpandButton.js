@@ -2,26 +2,32 @@ import React, { Component } from "react";
 import styled from "styled-components";
 
 const Button = styled.button`
-  height: 2rem;
+  height: 3rem;
   padding: 0;
   position: absolute;
   bottom: 37.5vh;
-  margin: 0.5rem;
-  width: 2rem;
+  width: 3rem;
 
   background-color: transparent;
-  border: 0.125rem solid rgba(255, 255, 255, 0.67);
-  border-radius: 50%;
-  color: rgba(255, 255, 255, 0.67);
+  border: none;
+  color: #000;
   font: 1rem ${props => props.theme && props.theme.fonts.sansSerif};
-  outline-color: #fff;
   transition: bottom 300ms;
+
+  ${props =>
+    !props.clicked && `background-color: ${props.theme.colors.accent};`};
 `;
 
 export default class ExpandButton extends Component {
   render() {
     return (
-      <Button onClick={this.props.toggle} expanded={this.props.expanded}>
+      <Button
+        onClick={() => {
+          this.props.toggleHighlight();
+          this.props.toggleButton();
+        }}
+        clicked={this.props.clicked}
+      >
         {this.props.expanded ? "-" : "+"}
       </Button>
     );

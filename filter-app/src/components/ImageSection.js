@@ -11,6 +11,14 @@ const Section = styled.section`
 `;
 
 export default class ImageSection extends Component {
+  state = {
+    clicked: false
+  };
+
+  toggleButton = () => {
+    this.setState({ clicked: true });
+  };
+
   render() {
     const { section, page } = this.props;
     return (
@@ -24,8 +32,14 @@ export default class ImageSection extends Component {
                 className="Highlight"
                 expanded={expanded}
                 toggle={toggleExpand}
+                toggleButton={this.toggleButton}
               >
-                <ExpandButton toggle={toggleExpand} expanded={expanded} />
+                <ExpandButton
+                  toggleHighlight={toggleExpand}
+                  toggleButton={this.toggleButton}
+                  expanded={expanded}
+                  clicked={this.state.clicked}
+                />
               </Highlight>
               <TextSection content={section.content} />
             </React.Fragment>

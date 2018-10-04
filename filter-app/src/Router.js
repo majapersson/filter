@@ -9,6 +9,7 @@ class Router extends Component {
   render() {
     const theme = {
       colors: {
+        accent: "#FFDD1F",
         dark: "#000",
         light: "#fff",
         bg: "#fff",

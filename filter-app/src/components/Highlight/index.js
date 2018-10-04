@@ -7,7 +7,10 @@ export default class Highlight extends Component {
       <StyledHighlight
         {...this.props}
         expanded={this.props.expanded}
-        onClick={this.props.toggle}
+        onClick={() => {
+          this.props.toggle();
+          this.props.toggleButton && this.props.toggleButton();
+        }}
       />
     );
   }
