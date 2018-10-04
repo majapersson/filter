@@ -4,43 +4,20 @@ export const Text = styled.article`
   display: flex;
   justify-content: center;
   padding: 12.5vh 0;
-  position: relative;
-  width: 100vw;
+  width: 87.2%;
 
-  background-color: ${props => props.theme && props.theme.colors.bg};
-  color: ${props => props.theme && props.theme.colors.fg};
   overflow: hidden;
 
   ${props => props.expanded && "width: 0px"};
 `;
 
-export const Header = styled.div`
-  height: 4.5rem;
-  position: absolute;
-  top: 0;
+export const Content = styled.div`
+  padding: 0 0.5rem 0 1.5rem;
   width: 100%;
 
-  background-color: ${props => props.theme && props.theme.colors.bg};
-  background-image: linear-gradient(
-    ${props => props.theme && props.theme.colors.bg},
-    transparent 90%
-  );
-`;
-
-export const Content = styled.div`
-  max-width: 87.2%;
-  padding: 0 0.5rem 0 1.5rem;
-
-  font-family: ${props => (props.theme ? props.theme.fonts.serif : "serif")};
-  font-size: ${props =>
-    props.theme ? `${props.theme.fonts.size}rem` : "1rem"};
-  line-height: ${props => props.theme && props.theme.fonts.height};
-
-  @media (min-width: 400px) {
-    margin-left: 3rem;
-    margin-right: 12.5vw;
-    max-width: 37.5rem;
-  }
+  font-family: ${props => props.theme && props.theme.fonts.serif};
+  font-size: ${props => props.font && `${props.font.size}rem`};
+  line-height: ${props => props.font && props.font.spacing};
 
   h2,
   h3,
@@ -52,15 +29,13 @@ export const Content = styled.div`
   }
 
   h2 {
-    font-size: ${props =>
-      props.theme ? `${props.theme.fonts.size * 1.5}rem` : "1.5rem"};
-    line-height: 1.4;
+    font-size: ${props => props.font && `${props.font.size * 1.5}rem`};
+    line-height: ${props => props.font && `${props.font.spacing * 0.8}`};
   }
 
   h3 {
-    font-size: ${props =>
-      props.theme ? `${props.theme.fonts.size * 1.25}rem` : "1.25rem"};
-    line-height: 1.2;
+    font-size: ${props => props.font && `${props.font.size * 1.25}rem`};
+    line-height: ${props => props.font && `${props.font.spacing * 0.7}`};
   }
 
   blockquote {
@@ -88,5 +63,11 @@ export const Content = styled.div`
       display: flex;
       align-items: center;
     }
+  }
+
+  a {
+    background-color: ${props => props.theme && props.theme.colors.accent};
+    color: inherit;
+    text-decoration: none;
   }
 `;

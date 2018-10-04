@@ -1,14 +1,26 @@
 import React, { Component } from "react";
 import ReactHtmlParser from "react-html-parser";
-import { Content, Header, Text } from "./styles";
+import { Content, Text } from "./styles";
+
+import ThemeContext from "../../ThemeContext";
 
 class TextSection extends Component {
   render() {
     return (
-      <Text className="TextSection">
-        <Header />
-        <Content>{ReactHtmlParser(this.props.content)}</Content>
-      </Text>
+      <React.Fragment>
+        <ThemeContext.Consumer>
+          {({ colors, font }) => (
+            <Text
+              className="TextSection"
+              style={{ backgroundColor: colors.bg, color: colors.fg }}
+            >
+              <Content font={font}>
+                {ReactHtmlParser(this.props.content)}
+              </Content>
+            </Text>
+          )}
+        </ThemeContext.Consumer>
+      </React.Fragment>
     );
   }
 }

@@ -2,6 +2,7 @@ import "rc-slider/assets/index.css";
 import React, { Component } from "react";
 import styled, { ThemeProvider } from "styled-components";
 import Slider from "rc-slider";
+import ThemeContext from "../../../ThemeContext";
 
 const Handle = Slider.Handle;
 
@@ -11,7 +12,7 @@ const handle = props => {
     <Handle
       value={value}
       {...restProps}
-      style={{ border: "none", backgroundColor: "#000" }}
+      style={{ border: "none", backgroundColor: "#000", marginTop: "-6px" }}
     />
   );
 };
@@ -20,7 +21,6 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 40%;
 `;
 
 const Label = styled.label`
@@ -33,22 +33,30 @@ const Label = styled.label`
 
 export default class TextSlider extends Component {
   render() {
+    const { min, max, name } = this.props;
     return (
-      <Wrapper>
-        <Label htmlFor={this.props.name}>
-          <this.props.icon />
-        </Label>
-        <Slider
-          min={0.5}
-          max={1.5}
-          defaultValue={1}
-          step={0.1}
-          handle={handle}
-          trackStyle={{ backgroundColor: "inherit" }}
-          name={this.props.name}
-          onChange={this.handleChange}
-        />
-      </Wrapper>
+      <React.Fragment>
+        <ThemeContext.Consumer>
+          {({ font, handleSettings }) => (
+            <Wrapper>
+              <Label htmlFor={name}>
+                <this.props.icon />
+              </Label>
+              <Slider
+                min={min}
+                max={max}
+                value={font[name]}
+                step={(max - min) / 10}
+                handle={handle}
+                railStyle={{ height: "2px" }}
+                trackStyle={{ backgroundColor: "inherit" }}
+                name={name}
+                onChange={value => handleSettings(name, value)}
+              />
+            </Wrapper>
+          )}
+        </ThemeContext.Consumer>
+      </React.Fragment>
     );
   }
 }

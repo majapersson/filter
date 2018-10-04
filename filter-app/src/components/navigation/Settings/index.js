@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import { Container, Header, Image, Title } from "./styles";
 import Chapters from "./Chapters";
-import SettingsBox from "./SettingsBox";
+import SettingsFooter from "./SettingsFooter";
 import Magazine from "../../Hero/Magazine";
 
 class Settings extends Component {
@@ -18,7 +18,7 @@ class Settings extends Component {
           </div>
         </Header>
         <Chapters article={article} page={page} />
-        <SettingsBox close={close} />
+        <SettingsFooter close={close} />
       </Container>
     );
   }
