@@ -19,13 +19,15 @@ export default class Hero extends Component {
   };
 
   render() {
-    const { article, heroOpen, closeHero } = this.props;
+    const { heroOpen, closeHero } = this.props;
     return (
       <ContentContext.Consumer>
-        {({ author, magazine, title, lead, image, photo, type }) => (
+        {({ author, id, image, lead, magazine, photo, title, type }) => (
           <HeroSection
             className={`Hero ${heroOpen ? "heroOpen" : ""}`}
-            style={heroOpen && { backgroundImage: `url(${image.sizes.large})` }}
+            style={{
+              backgroundImage: !heroOpen && `url(${image.sizes.large})`
+            }}
           >
             <Overlay className="Overlay" />
             <Main>
@@ -35,7 +37,7 @@ export default class Hero extends Component {
               </Title>
               <ArrowButton
                 title={heroOpen ? "Läs artikeln" : "Scrolla ner"}
-                url={heroOpen ? `/article/${article.id}` : "#"}
+                url={heroOpen ? `/article/${id}` : "#"}
                 toggle={heroOpen && this.delayLink}
               />
               <CloseButton

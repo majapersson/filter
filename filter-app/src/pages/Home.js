@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
+import { COLORS } from "../Helpers";
 import Navigation from "../components/navigation/Navbar";
 import SlideWrapper from "../components/SlideWrapper";
 
@@ -11,8 +12,7 @@ const Main = styled.main`
   min-height: 100vh;
   overflow: hidden;
 
-  background-color: ${props =>
-    props.theme ? props.theme.colors.dark : "#000"};
+  background-color: ${COLORS.dark};
 `;
 
 export default class Home extends Component {

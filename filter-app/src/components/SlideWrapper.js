@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { COLORS } from "../Helpers";
 
+import { ContentProvider } from "../context/ContentContext";
 import Expand from "./HOC/Expand";
 import Slide from "./Slide";
 
@@ -18,11 +19,9 @@ export default class SlideWrapper extends Component {
         {articles.map(article => (
           <Expand key={article.id}>
             {({ expanded, toggleExpand }) => (
-              <Slide
-                article={article}
-                toggleExpand={toggleExpand}
-                expanded={expanded}
-              />
+              <ContentProvider article={article}>
+                <Slide toggleExpand={toggleExpand} expanded={expanded} />
+              </ContentProvider>
             )}
           </Expand>
         ))}

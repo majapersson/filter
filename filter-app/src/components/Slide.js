@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
+import ContentContext from "../context/ContentContext";
 import Expand from "./HOC/Expand";
 import Hero from "./Hero";
 
@@ -41,31 +42,32 @@ const Image = styled.img`
 
 class Slide extends Component {
   render() {
-    const { article, toggleExpand, expanded } = this.props;
+    const { toggleExpand, expanded } = this.props;
     return (
-      <React.Fragment>
-        <Expand>
-          {({ expanded: fullWidth, toggleExpand: toggleFull }) => (
-            <React.Fragment>
-              <Image
-                src={article.image.sizes.medium}
-                expanded={expanded}
-                onClick={toggleExpand}
-                fullWidth={fullWidth}
-              />
-              {expanded && (
-                <Hero
-                  article={article}
-                  heroOpen
-                  closeHero={toggleExpand}
-                  toggleFull={toggleFull}
+      <Expand>
+        {({ expanded: fullWidth, toggleExpand: toggleFull }) => (
+          <ContentContext.Consumer>
+            {({ image }) => (
+              <React.Fragment>
+                <Image
+                  src={image.sizes.medium}
+                  expanded={expanded}
+                  onClick={toggleExpand}
                   fullWidth={fullWidth}
                 />
-              )}
-            </React.Fragment>
-          )}
-        </Expand>
-      </React.Fragment>
+                {expanded && (
+                  <Hero
+                    heroOpen
+                    closeHero={toggleExpand}
+                    toggleFull={toggleFull}
+                    fullWidth={fullWidth}
+                  />
+                )}
+              </React.Fragment>
+            )}
+          </ContentContext.Consumer>
+        )}
+      </Expand>
     );
   }
 }
