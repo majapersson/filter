@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { COLORS } from "../../../Helpers";
+import ContentContext from "../../../context/ContentContext";
 
 const ChapterList = styled.ul`
   flex-grow: 2;
@@ -41,15 +42,19 @@ const Page = styled.span`
   color: ${COLORS.dark};
 `;
 
-const Chapters = ({ article, page }) => (
-  <ChapterList>
-    <Chapter first>Artikelindex</Chapter>
-    {article.sections.map((item, index) => (
-      <Chapter key={index} active={index + 1 === page}>
-        {item.title} <Page>{index + 1}</Page>
-      </Chapter>
-    ))}
-  </ChapterList>
+const Chapters = ({ page }) => (
+  <ContentContext.Consumer>
+    {({ sections }) => (
+      <ChapterList>
+        <Chapter first>Artikelindex</Chapter>
+        {sections.map((item, index) => (
+          <Chapter key={index} active={index + 1 === page}>
+            {item.title} <Page>{index + 1}</Page>
+          </Chapter>
+        ))}
+      </ChapterList>
+    )}
+  </ContentContext.Consumer>
 );
 
 export default Chapters;

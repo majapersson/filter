@@ -23,11 +23,11 @@ export const Container = styled.aside`
 
 class Settings extends Component {
   render() {
-    const { article, expanded, close, page } = this.props;
+    const { expanded, close, page } = this.props;
     return (
       <Container expanded={expanded}>
-        <Header article={article} />
-        <Chapters article={article} page={page} />
+        <Header />
+        <Chapters page={page} />
         <Footer close={close} />
       </Container>
     );

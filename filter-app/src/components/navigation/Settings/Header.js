@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
+import ContentContext from "../../../context/ContentContext";
 import Magazine from "../../Hero/Magazine";
 
 export const Wrapper = styled.div`
@@ -26,15 +27,18 @@ export const Title = styled.span`
 
 class Header extends Component {
   render() {
-    const { article } = this.props;
     return (
-      <Wrapper>
-        <Image src={article.image.sizes.thumbnail} />
-        <div>
-          <Title>{article.title}</Title>
-          <Magazine magazine={article.magazine} color={"dark"} />
-        </div>
-      </Wrapper>
+      <ContentContext.Consumer>
+        {({ image, magazine, title }) => (
+          <Wrapper>
+            <Image src={image.sizes.thumbnail} />
+            <div>
+              <Title>{title}</Title>
+              <Magazine color={"dark"} />
+            </div>
+          </Wrapper>
+        )}
+      </ContentContext.Consumer>
     );
   }
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { COLORS } from "../../Helpers";
+import ContentContext from "../../context/ContentContext";
 
 const Style = styled.p`
   font-weight: 400;
@@ -21,18 +22,22 @@ const Line = styled.span`
   opacity: 0.67;
 `;
 
-const Magazine = ({ magazine, color }) => (
-  <Style>
-    {window.innerWidth > 400 ? (
-      <React.Fragment>
-        Publicerad i Filter #{magazine.title} ({magazine.published}
-      </React.Fragment>
-    ) : (
-      <React.Fragment>
-        #{magazine.title} <Line color={color} /> {magazine.published}
-      </React.Fragment>
+const Magazine = ({ color }) => (
+  <ContentContext.Consumer>
+    {({ magazine }) => (
+      <Style>
+        {window.innerWidth > 400 ? (
+          <React.Fragment>
+            Publicerad i Filter #{magazine.title} ({magazine.published}
+          </React.Fragment>
+        ) : (
+          <React.Fragment>
+            #{magazine.title} <Line color={color} /> {magazine.published}
+          </React.Fragment>
+        )}
+      </Style>
     )}
-  </Style>
+  </ContentContext.Consumer>
 );
 
 export default Magazine;

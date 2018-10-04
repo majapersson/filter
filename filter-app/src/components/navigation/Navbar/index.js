@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
-import { Logo, SmallLogo } from "../../Logo";
+import { SmallLogo } from "../../Logo";
 import Account from "../../icons/account";
 import Menu from "../../icons/menu";
 
