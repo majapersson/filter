@@ -3,17 +3,23 @@ import { throttle } from "../../Helpers";
 
 class ScrollContainer extends Component {
   state = {
-    progress: 0
+    progress: 0,
+    page: 0
   };
 
   handleScroll = () => {
     const { scrollHeight, scrollTop } = document.scrollingElement;
     const progress = (scrollTop / (scrollHeight - window.innerHeight)) * 100;
-    this.setState({ progress });
+    const page = Math.floor((progress / 100) * this.props.pages) + 1;
+    this.setState({ progress, page });
+  };
+
+  update = () => {
+    this.handleScroll();
   };
 
   componentDidMount() {
-    window.addEventListener("scroll", throttle(this.handleScroll, 50));
+    window.addEventListener("scroll", throttle(this.update, 100));
   }
 
   componentWillUnMount() {
@@ -23,7 +29,8 @@ class ScrollContainer extends Component {
   render() {
     const { children } = this.props;
     return children({
-      progress: this.state.progress
+      progress: this.state.progress,
+      page: this.state.page
     });
   }
 }

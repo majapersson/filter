@@ -8,7 +8,6 @@ export const Length = styled.div`
   div {
     background-color: ${props =>
       props.theme ? props.theme.colors.dark : "#000"};
-    height: ${props => props.progress}%;
   }
 `;
 
@@ -28,7 +27,7 @@ export const ProgressBar = styled.div`
   height: 37.5vh;
   position: fixed;
   bottom: 0;
-  right: 62.5vw;
+  left: 0;
   align-items: center;
   padding: 0.75rem 0;
   width: 3rem;
@@ -37,11 +36,4 @@ export const ProgressBar = styled.div`
   background-color: ${props =>
     props.theme ? props.theme.colors.light : "#fff"};
   transition: all 300ms;
-
-  ${props => props.progress < 3 && "bottom: -37.5vh"};
-
-  @media (max-width: 400px) {
-    right: auto;
-    left: 0;
-  }
 `;

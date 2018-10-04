@@ -31,16 +31,17 @@ export default class Article extends Component {
   render() {
     const { article } = this.state;
     return (
-      <ScrollContainer>
-        {({ progress }) => (
-          <React.Fragment>
-            <Navigation transparent />
+      <React.Fragment>
+        <Navigation transparent />
+        <ScrollContainer pages={article && article.sections.length}>
+          {({ progress, page }) => (
             <Expand>
               {({ expanded, toggleExpand }) => (
                 <React.Fragment>
                   <Progress
+                    page={page}
                     progress={progress}
-                    sections={article !== null ? article.sections.length : ""}
+                    sections={article && article.sections.length}
                     toggleSettings={toggleExpand}
                   />
                   {article && (
@@ -48,38 +49,39 @@ export default class Article extends Component {
                       article={article}
                       expanded={expanded}
                       close={toggleExpand}
-                      progress={progress}
+                      page={page}
                     />
                   )}
                 </React.Fragment>
               )}
             </Expand>
-            <main role="main">
-              {article === null ? null : (
-                <section className="Article">
-                  <Hero article={article} />
-                  {article.sections.map(
-                    (section, index) =>
-                      section.acf_fc_layout === "image_section" ? (
-                        <ImageSection
-                          section={section}
-                          key={index}
-                          page={index + 1}
-                        />
-                      ) : section.acf_fc_layout === "quote_section" ? (
-                        <QuoteSection
-                          section={section}
-                          key={index}
-                          page={index + 1}
-                        />
-                      ) : null
-                  )}
-                </section>
+          )}
+        </ScrollContainer>
+
+        <main role="main">
+          {article === null ? null : (
+            <section className="Article">
+              <Hero article={article} />
+              {article.sections.map(
+                (section, index) =>
+                  section.acf_fc_layout === "image_section" ? (
+                    <ImageSection
+                      section={section}
+                      key={index}
+                      page={index + 1}
+                    />
+                  ) : section.acf_fc_layout === "quote_section" ? (
+                    <QuoteSection
+                      section={section}
+                      key={index}
+                      page={index + 1}
+                    />
+                  ) : null
               )}
-            </main>
-          </React.Fragment>
-        )}
-      </ScrollContainer>
+            </section>
+          )}
+        </main>
+      </React.Fragment>
     );
   }
 }

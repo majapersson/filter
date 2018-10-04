@@ -5,23 +5,22 @@ import SettingsIcon from "../../icons/settings";
 
 export default class Progress extends Component {
   render() {
-    const { progress, toggleSettings, sections } = this.props;
-    const page =
-      Math.floor((this.props.progress / 100) * this.props.sections) + 1;
+    const { progress, toggleSettings, page, sections } = this.props;
     return (
-      <React.Fragment>
-        <ProgressBar className="Progress" progress={progress}>
-          <Length progress={progress}>
-            <div />
-          </Length>
-          <Page>
-            {page}
-            <span>/{sections}</span>
-          </Page>
+      <ProgressBar
+        className="Progress"
+        style={{ bottom: progress < 3 && -37.5 + "vh" }}
+      >
+        <Length>
+          <div style={{ height: `${progress}%` }} />
+        </Length>
+        <Page>
+          {page}
+          <span>/{sections}</span>
+        </Page>
 
-          <SettingsIcon toggle={toggleSettings} />
-        </ProgressBar>
-      </React.Fragment>
+        <SettingsIcon toggle={toggleSettings} />
+      </ProgressBar>
     );
   }
 }
