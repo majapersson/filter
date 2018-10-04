@@ -1,9 +1,13 @@
-import React from "react";
+import React, { Component } from "react";
 import styled from "styled-components";
+import TextSlider from "./TextSlider";
 
 import X from "../../icons/x";
+import size from "../../icons/size";
+import spacing from "../../icons/spacing";
+import brightness from "../../icons/brightness";
 
-export const Close = styled.div`
+const Close = styled.div`
   height: 3rem;
   padding: 0.5rem;
   position: absolute;
@@ -14,20 +18,26 @@ export const Close = styled.div`
   ${props => props.theme && `background-color: ${props.theme.colors.dark}`};
 `;
 
-export const Setting = styled.div``;
-
-export const Wrapper = styled.div`
+const Wrapper = styled.div`
   height: 9rem;
-  position: relative;
 `;
 
-const SettingsBox = ({ close }) => (
-  <Wrapper>
-    <div />
-    <Close onClick={close}>
-      <X />
-    </Close>
-  </Wrapper>
-);
+class SettingsBox extends Component {
+  render() {
+    const { close } = this.props;
+    return (
+      <React.Fragment>
+        <Wrapper>
+          <TextSlider name={"size"} icon={size} />
+          <TextSlider name={"spacing"} icon={spacing} />
+          <TextSlider name={"brightness"} icon={brightness} />
+        </Wrapper>
+        <Close onClick={close}>
+          <X style={{ fill: "#FFF" }} />
+        </Close>
+      </React.Fragment>
+    );
+  }
+}
 
 export default SettingsBox;

@@ -33,4 +33,5 @@ export const Title = styled.span`
   font-size: 1.25rem;
   font-weight: 700;
   line-height: 1.25;
+  opacity: 0.67;
 `;

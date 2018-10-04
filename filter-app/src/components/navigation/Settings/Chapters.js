@@ -1,12 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 
-export const ChapterList = styled.ul`
+const ChapterList = styled.ul`
   flex-grow: 2;
   padding: 0;
 `;
 
-export const Chapter = styled.li`
+const Chapter = styled.li`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -15,24 +15,10 @@ export const Chapter = styled.li`
 
   font-size: 1rem;
 
-  span {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    width: 3rem;
-    ${props =>
-      props.theme &&
-      `
-    color: ${props.theme.colors.dark};
-    `};
+  &:first-child {
+    font-weight: 700;
+    text-transform: uppercase;
   }
-
-  ${props =>
-    props.first &&
-    ` font-weight: 700;
-      text-transform: uppercase;
-    `};
 
   ${props =>
     props.active &&
@@ -45,12 +31,25 @@ export const Chapter = styled.li`
     `};
 `;
 
+const Page = styled.span`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 3rem;
+  ${props =>
+    props.theme &&
+    `
+  color: ${props.theme.colors.dark};
+  `};
+`;
+
 const Chapters = ({ article, page }) => (
   <ChapterList>
     <Chapter first>Artikelindex</Chapter>
     {article.sections.map((item, index) => (
       <Chapter key={index} active={index + 1 === page}>
-        {item.title} <span>{index + 1}</span>
+        {item.title} <Page>{index + 1}</Page>
       </Chapter>
     ))}
   </ChapterList>
