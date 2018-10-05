@@ -5,12 +5,20 @@ import Arrow from "../icons/arrow";
 
 class ArrowButton extends Component {
   render() {
-    const { title, toggle, url } = this.props;
+    const { right, title, toggle, url } = this.props;
     return (
       <Button>
-        <Link to={url} onClick={toggle ? e => toggle(e, url) : () => {}}>
+        <Link
+          to={url}
+          onClick={toggle ? e => toggle(e, url) : () => {}}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            textDecoration: "none"
+          }}
+        >
           <span>{title}</span>
-          <Arrow />
+          <Arrow style={{ transform: right && "rotate(-90deg)" }} />
         </Link>
       </Button>
     );

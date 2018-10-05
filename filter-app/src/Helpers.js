@@ -28,12 +28,3 @@ export const throttle = (fn, delay) => {
     return fn(...args);
   };
 };
-
-export function delayLink(e, url) {
-  console.log("Delaying...");
-  e.preventDefault();
-
-  setTimeout(function() {
-    window.location = url;
-  }, 5000);
-}

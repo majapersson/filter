@@ -39,7 +39,8 @@ body {
   margin: 0;
   padding: 0;
 
-  color: #333;
+  background-color: #000;
+  color: #000;
   font-family: "National", sans-serif;
   line-height: 1.75;
 }

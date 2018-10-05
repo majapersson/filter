@@ -23,15 +23,15 @@ const Image = styled.img`
   ${props =>
     props.expanded &&
     `
-      filter: brightness(100%);
-      transform: scale(2) translateX(-10%);
-      z-index: 1;
+      // filter: brightness(100%);
+      // transform: scale(2) translateX(-10%);
+      // z-index: 1;
     `};
 
   ${props =>
     props.fullWidth &&
     `
-    transform: scale(4) translateX(-20%);
+    // transform: scale(4) translateX(-20%);
   `};
 
   @media (min-width: 400px) {

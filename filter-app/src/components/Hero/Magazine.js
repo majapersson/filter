@@ -22,7 +22,7 @@ const Line = styled.span`
   opacity: 0.67;
 `;
 
-const Magazine = ({ color }) => (
+const Magazine = ({ magazine, color }) => (
   <ContentContext.Consumer>
     {({ magazine }) => (
       <Style>

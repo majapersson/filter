@@ -1,14 +1,15 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
-import { COLORS } from "../Helpers";
+import { ContentProvider } from "../context/ContentContext";
+import HomeHero from "../components/Hero/HomeHero";
 import Navigation from "../components/navigation/Navbar";
 import SlideWrapper from "../components/SlideWrapper";
 
-import { API_ROOT } from "../Helpers";
+import Expand from "../components/HOC/Expand";
+import { API_ROOT, COLORS } from "../Helpers";
 
 const Main = styled.main`
-  padding-top: 12rem;
   min-height: 100vh;
   overflow: hidden;
 
@@ -35,9 +36,20 @@ export default class Home extends Component {
     const { articles } = this.state;
     return (
       <React.Fragment>
-        <Navigation />
+        <Navigation dark />
         <Main role="main">
-          {articles !== null ? <SlideWrapper articles={articles} /> : null}
+          {articles && (
+            <React.Fragment>
+              <ContentProvider article={articles[1]}>
+                <Expand>
+                  {({ expanded: fullWidth, toggleExpand: toggleFull }) => (
+                    <HomeHero toggleFull={toggleFull} fullWidth={fullWidth} />
+                  )}
+                </Expand>
+              </ContentProvider>
+              <SlideWrapper articles={articles} />
+            </React.Fragment>
+          )}
         </Main>
       </React.Fragment>
     );

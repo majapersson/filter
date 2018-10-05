@@ -34,7 +34,7 @@ add_action( 'rest_api_init', function () {
         }
     ]);
 
-    register_rest_route( 'wp/v2', '/articles/(?P<id>\d+)', [
+    register_rest_route( 'wp/v2', '/article/(?P<id>\d+)', [
         'methods' => 'GET',
         'callback' => function ($data) {
             $post = get_post($data['id']);

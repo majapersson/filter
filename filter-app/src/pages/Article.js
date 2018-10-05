@@ -20,14 +20,15 @@ export default class Article extends Component {
   };
 
   getData = async id => {
-    const article = await fetch(`${API_ROOT}/articles/${id}`).then(data =>
-      data.json()
-    );
-    this.setState({ article });
+    // const article = await fetch(`${API_ROOT}/article/${id}`).then(data =>
+    //   data.json()
+    // );
   };
 
   componentWillMount() {
-    this.getData(this.props.match.params.id);
+    // this.getData(this.props.match.params.id);
+    const article = JSON.parse(localStorage.getItem("article"));
+    this.setState({ article });
   }
 
   render() {
@@ -35,7 +36,7 @@ export default class Article extends Component {
     return (
       <React.Fragment>
         <ContentProvider article={article}>
-          <Navigation transparent />
+          <Navigation dark />
           <ScrollContainer pages={article && article.sections.length}>
             {({ progress, page }) => (
               <Expand>

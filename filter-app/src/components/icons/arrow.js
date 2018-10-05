@@ -1,7 +1,7 @@
 import React from "react";
 
-const Arrow = () => (
-  <svg viewBox="0 0 32 32">
+const Arrow = ({ style }) => (
+  <svg viewBox="0 0 32 32" style={{ ...style }}>
     <path
       fill="#FFF"
       fillRule="evenodd"

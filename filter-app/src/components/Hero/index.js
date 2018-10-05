@@ -1,17 +1,31 @@
 import React, { Component } from "react";
-import { Info, HeroSection, Main, Overlay, Title } from "./styles";
+import { API_ROOT } from "../../Helpers";
+import {
+  Image,
+  Info,
+  HeroSection,
+  Lead,
+  Main,
+  Overlay,
+  Title,
+  Top
+} from "./styles";
 
 import ContentContext from "../../context/ContentContext";
 import ArrowButton from "./ArrowButton";
 import CloseButton from "./CloseButton";
 import Magazine from "./Magazine";
 
-export default class Hero extends Component {
-  delayLink = (e, url) => {
+class Hero extends Component {
+  delayLink = async (e, url) => {
     console.log("Delaying...");
     e.preventDefault();
 
-    this.props.toggleFull();
+    if (this.props.toggleFull) {
+      this.props.toggleFull();
+      const data = await fetch(`${API_ROOT}${url}`).then(data => data.json());
+      localStorage.setItem("article", JSON.stringify(data));
+    }
 
     setTimeout(function() {
       window.location = url;
@@ -19,7 +33,7 @@ export default class Hero extends Component {
   };
 
   render() {
-    const { heroOpen, closeHero } = this.props;
+    const { closeHero, fullWidth, heroOpen } = this.props;
     return (
       <ContentContext.Consumer>
         {({ author, id, image, lead, magazine, photo, title, type }) => (
@@ -29,20 +43,38 @@ export default class Hero extends Component {
               backgroundImage: !heroOpen && `url(${image.sizes.large})`
             }}
           >
-            <Overlay className="Overlay" />
+            <Overlay
+              className="Overlay"
+              style={{ backgroundColor: heroOpen && "rgba(0, 0, 0, 0.9)" }}
+            />
             <Main>
-              <Magazine color={"light"} />
+              {heroOpen && (
+                <Image
+                  style={{ backgroundImage: `url(${image.sizes.large})` }}
+                  fullWidth={fullWidth}
+                />
+              )}
+              <Top>
+                <Magazine color={"light"} />
+                <CloseButton
+                  url={heroOpen ? "#" : "/"}
+                  toggle={heroOpen ? closeHero : this.delayLink}
+                />
+              </Top>
               <Title className="Title" style={heroOpen && { opacity: 0 }}>
                 {title}
               </Title>
+              <Lead className="Lead">
+                {lead
+                  .split(" ")
+                  .slice(0, 25)
+                  .join(" ")}
+              </Lead>
               <ArrowButton
                 title={heroOpen ? "Läs artikeln" : "Scrolla ner"}
                 url={heroOpen ? `/article/${id}` : "#"}
                 toggle={heroOpen && this.delayLink}
-              />
-              <CloseButton
-                url={heroOpen ? "#" : "/"}
-                toggle={heroOpen ? closeHero : this.delayLink}
+                right={heroOpen && "true"}
               />
             </Main>
             <Info>
@@ -69,3 +101,4 @@ export default class Hero extends Component {
     );
   }
 }
+export default withRouter(Hero);
