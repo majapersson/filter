@@ -9,7 +9,11 @@ export const Nav = styled.nav`
   width: 100%;
   z-index: 3;
 
-  @media (min-width: 400px) {
+  ${props =>
+    props.dark &&
+    `background-image: linear-gradient(to bottom, ${
+      COLORS.dark
+    }, transparent);`} @media (min-width: 400px) {
     height: 6rem;
   }
 `;
@@ -43,9 +47,6 @@ export const Tab = styled.div`
   height: 100%;
   padding: 1rem;
   margin-left: 1rem;
-
-  background-color: ${props =>
-    props.transparent ? "transparent" : `${COLORS.fg}`};
 
   svg {
     width: 1rem;

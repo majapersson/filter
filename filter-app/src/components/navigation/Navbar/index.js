@@ -10,7 +10,7 @@ import { Nav, Right, StyledLogo, Tab } from "./styles.js";
 class Navigation extends Component {
   render() {
     return (
-      <Nav>
+      <Nav dark={this.props.dark}>
         <StyledLogo href="/">
           <SmallLogo />
         </StyledLogo>
