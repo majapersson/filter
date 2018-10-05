@@ -101,4 +101,4 @@ class Hero extends Component {
     );
   }
 }
-export default withRouter(Hero);
+export default Hero;

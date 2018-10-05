@@ -140,7 +140,7 @@ export const Overlay = styled.div`
   background-color: rgba(0, 0, 0, 0.3);
 `;
 
-export const Title = styled.h1`
+export const Title = styled.h2`
   font-size: 10vw;
   font-family: "Tiempos Headline", serif;
   line-height: 1.25;
