@@ -16,7 +16,8 @@ import { API_ROOT } from "../Helpers.js";
 
 export default class Article extends Component {
   state = {
-    article: null
+    article: null,
+    progress: 0
   };
 
   getData = async id => {
@@ -25,10 +26,24 @@ export default class Article extends Component {
     // );
   };
 
+  componentDidMount() {
+    const { progress } = this.state;
+
+    window.scroll({
+      left: 0,
+      top: (progress / 100) * document.scrollingElement.scrollHeight,
+      behavior: "smooth"
+    });
+  }
+
   componentWillMount() {
     // this.getData(this.props.match.params.id);
     const article = JSON.parse(localStorage.getItem("article"));
     this.setState({ article });
+    const progress = JSON.parse(localStorage.getItem("progress")).find(
+      item => item.article === this.props.match.params.id
+    );
+    this.setState({ progress: progress.progress });
   }
 
   render() {
