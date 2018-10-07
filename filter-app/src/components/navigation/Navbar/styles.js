@@ -47,6 +47,7 @@ export const Tab = styled.div`
   height: 100%;
   padding: 1rem;
   margin-left: 1rem;
+  z-index: 3;
 
   svg {
     width: 1rem;

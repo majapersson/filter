@@ -8,11 +8,13 @@ import Slide from "./Slide";
 
 const Overlay = styled.div`
   background-image: linear-gradient(to right, transparent, ${COLORS.dark});
-  position: fixed;
+  position: absolute;
   right: 0;
   top: 0;
   height: 100%;
+  pointer-events: none;
   width: 20vw;
+  z-index: 0;
 `;
 
 const Slider = styled.article`
@@ -21,9 +23,8 @@ const Slider = styled.article`
 `;
 
 const SliderWrapper = styled.div`
-  position: relative;
-  overflow: auto;
   touch-action: pan-right;
+  overflow: auto;
 `;
 
 const Title = styled.h3`
@@ -36,7 +37,9 @@ const Title = styled.h3`
   text-transform: uppercase;
 `;
 
-const Wrapper = styled.section``;
+const Wrapper = styled.section`
+  position: relative;
+`;
 
 export default class SlideWrapper extends Component {
   render() {
@@ -56,8 +59,8 @@ export default class SlideWrapper extends Component {
               </Expand>
             ))}
           </Slider>
-          <Overlay />
         </SliderWrapper>
+        <Overlay />
       </Wrapper>
     );
   }

@@ -1,9 +1,12 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
+import Expand from "../../HOC/Expand";
 import { SmallLogo } from "../../Logo";
 import Account from "../../icons/account";
 import Menu from "../../icons/menu";
+import X from "../../icons/x";
+import MainMenu from "./MainMenu";
 
 import { Nav, Right, StyledLogo, Tab } from "./styles.js";
 
@@ -18,11 +21,19 @@ class Navigation extends Component {
           <Tab transparent={this.props.transparent}>
             <Account />
           </Tab>
-          <Tab transparent={this.props.transparent}>
-            <Link to="/">
-              <Menu />
-            </Link>
-          </Tab>
+          <Expand>
+            {({ expanded, toggleExpand }) => (
+              <React.Fragment>
+                <Tab
+                  transparent={this.props.transparent}
+                  onClick={toggleExpand}
+                >
+                  {expanded ? <X style={{ fill: "#FFF" }} /> : <Menu />}
+                </Tab>
+                <MainMenu expanded={expanded} />
+              </React.Fragment>
+            )}
+          </Expand>
         </Right>
       </Nav>
     );
