@@ -12,12 +12,30 @@ const Section = styled.section`
 
 export default class ImageSection extends Component {
   state = {
-    clicked: false
+    inView: null
   };
 
-  toggleButton = () => {
-    this.setState({ clicked: true });
+  handleObserver = () => {
+    this.state.inView === null
+      ? this.setState({ inView: false })
+      : this.setState({ inView: !this.state.inView });
   };
+
+  componentDidMount() {
+    const links = document.querySelectorAll(".target");
+
+    const options = {
+      root: null,
+      rootMargin: "50% 0px -75% 0px",
+      threshold: 1.0
+    };
+
+    const observer = new IntersectionObserver(this.handleObserver, options);
+
+    links.forEach(target => {
+      observer.observe(target);
+    });
+  }
 
   render() {
     const { section, page } = this.props;
@@ -39,6 +57,7 @@ export default class ImageSection extends Component {
                   toggleButton={this.toggleButton}
                   expanded={expanded}
                   clicked={this.state.clicked}
+                  inView={this.state.inView}
                 />
               </Highlight>
               <TextSection content={section.content} />
