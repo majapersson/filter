@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 import { API_ROOT } from "../../Helpers";
 import {
   Image,
@@ -6,6 +7,7 @@ import {
   HeroSection,
   Lead,
   Main,
+  Middle,
   Overlay,
   Title,
   Top
@@ -17,19 +19,18 @@ import CloseButton from "./CloseButton";
 import Magazine from "./Magazine";
 
 class Hero extends Component {
-  delayLink = async (e, url) => {
-    console.log("Delaying...");
-    e.preventDefault();
+  state = {
+    redirect: false
+  };
 
+  delayLink = async (e, url) => {
     if (this.props.toggleFull) {
       this.props.toggleFull();
       const data = await fetch(`${API_ROOT}${url}`).then(data => data.json());
       localStorage.setItem("article", JSON.stringify(data));
     }
 
-    setTimeout(function() {
-      window.location = url;
-    }, 500);
+    this.setState({ redirect: true });
   };
 
   render() {
@@ -43,6 +44,9 @@ class Hero extends Component {
               backgroundImage: !heroOpen && `url(${image.sizes.large})`
             }}
           >
+            {this.state.redirect && (
+              <Redirect to={heroOpen ? `/article/${id}` : "/"} />
+            )}
             <Overlay
               className="Overlay"
               style={{ backgroundColor: heroOpen && "rgba(0, 0, 0, 0.9)" }}
@@ -61,15 +65,17 @@ class Hero extends Component {
                   toggle={heroOpen ? closeHero : this.delayLink}
                 />
               </Top>
-              <Title className="Title" style={heroOpen && { opacity: 0 }}>
-                {title}
-              </Title>
-              <Lead className="Lead">
-                {lead
-                  .split(" ")
-                  .slice(0, 25)
-                  .join(" ")}
-              </Lead>
+              <Middle>
+                <Title className="Title" style={heroOpen && { opacity: 0 }}>
+                  {title}
+                </Title>
+                <Lead className="Lead">
+                  {lead
+                    .split(" ")
+                    .slice(0, 25)
+                    .join(" ")}
+                </Lead>
+              </Middle>
               <ArrowButton
                 title={heroOpen ? "Läs artikeln" : "Scrolla ner"}
                 url={heroOpen ? `/article/${id}` : "#"}

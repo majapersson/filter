@@ -32,9 +32,11 @@ export default class Article extends Component {
   componentWillMount() {
     const article = JSON.parse(localStorage.getItem("article"));
     this.setState({ article });
-    const progress = JSON.parse(localStorage.getItem("progress")).find(
-      item => item.article === this.props.match.params.id
-    );
+    const stored = JSON.parse(localStorage.getItem("progress"));
+
+    const progress = stored
+      ? stored.find(item => item.article === this.props.match.params.id)
+      : 0;
     this.setState({ progress: progress.progress });
   }
 

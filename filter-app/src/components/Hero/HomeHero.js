@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 
 import { API_ROOT } from "../../Helpers";
 import ContentContext from "../../context/ContentContext";
@@ -7,19 +8,18 @@ import ArrowButton from "./ArrowButton";
 import Magazine from "./Magazine";
 
 class HomeHero extends Component {
-  delayLink = async (e, url) => {
-    console.log("Delaying...");
-    e.preventDefault();
+  state = {
+    redirect: false
+  };
 
+  delayLink = async (e, url) => {
     if (this.props.toggleFull) {
       this.props.toggleFull();
       const data = await fetch(`${API_ROOT}${url}`).then(data => data.json());
       localStorage.setItem("article", JSON.stringify(data));
     }
 
-    setTimeout(function() {
-      window.location = url;
-    }, 500);
+    this.setState({ redirect: true });
   };
 
   render() {
@@ -27,6 +27,7 @@ class HomeHero extends Component {
       <ContentContext.Consumer>
         {({ id, image, lead, title }) => (
           <HeroSection className={"Hero"}>
+            {this.state.redirect && <Redirect to={`/article/${id}`} />}
             <Image
               style={{ backgroundImage: `url(${image.sizes.large})` }}
               fullWidth={this.props.fullWidth}

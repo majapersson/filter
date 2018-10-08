@@ -27,7 +27,7 @@ class ScrollProvider extends Component {
 
     const prevProgress = storage.find(item => item.article === id);
 
-    if (prevProgress.length !== 0) {
+    if (prevProgress !== undefined) {
       prevProgress.progress = progress;
       storage.map(item => item.id === id && prevProgress);
     } else {
