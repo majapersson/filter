@@ -1,8 +1,10 @@
-import { Component } from "react";
+import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { throttle } from "../../Helpers";
 
-class ScrollContainer extends Component {
+export const ProgressContext = React.createContext();
+
+class ScrollProvider extends Component {
   state = {
     progress: 0,
     page: 0
@@ -42,17 +44,17 @@ class ScrollContainer extends Component {
     window.addEventListener("scroll", throttle(this.update, 100));
   }
 
-  componentWillUnMount() {
-    window.removeEventListener("scroll", this.handleScroll);
+  componentWillUnmount() {
+    window.removeEventListener("scroll", throttle(this.update, 100));
   }
 
   render() {
-    const { children } = this.props;
-    return children({
-      progress: this.state.progress,
-      page: this.state.page
-    });
+    return (
+      <ProgressContext.Provider value={{ ...this.state }}>
+        {this.props.children}
+      </ProgressContext.Provider>
+    );
   }
 }
 
-export default withRouter(ScrollContainer);
+export default withRouter(ScrollProvider);

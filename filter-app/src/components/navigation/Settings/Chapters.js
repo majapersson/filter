@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { COLORS } from "../../../Helpers";
 import ContentContext from "../../../context/ContentContext";
+import { ProgressContext } from "../../HOC/ScrollProvider";
 
 const ChapterList = styled.ul`
   flex-grow: 2;
@@ -57,14 +58,19 @@ export const Subheader = styled.div`
 const Chapters = ({ page }) => (
   <ContentContext.Consumer>
     {({ sections }) => (
-      <ChapterList>
-        <Subheader>Artikelindex</Subheader>
-        {sections.map((item, index) => (
-          <Chapter key={index} active={index + 1 === page}>
-            {item.title} <Page>{index + 1}</Page>
-          </Chapter>
-        ))}
-      </ChapterList>
+      <ProgressContext.Consumer>
+        {({ page }) => (
+          <ChapterList>
+            <Subheader>Artikelindex</Subheader>
+
+            {sections.map((item, index) => (
+              <Chapter key={index} active={index + 1 === page}>
+                {item.title} <Page>{index + 1}</Page>
+              </Chapter>
+            ))}
+          </ChapterList>
+        )}
+      </ProgressContext.Consumer>
     )}
   </ContentContext.Consumer>
 );

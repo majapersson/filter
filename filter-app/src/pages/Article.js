@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import ScrollContainer from "../components/HOC/ScrollContainer";
+import ScrollProvider from "../components/HOC/ScrollProvider";
 import Expand from "../components/HOC/Expand";
 import { ContentProvider } from "../context/ContentContext";
 
@@ -49,26 +49,16 @@ export default class Article extends Component {
               <Expand>
                 {({ expanded: comments, toggleExpand: toggleComments }) => (
                   <React.Fragment>
-                    <ScrollContainer pages={article && article.sections.length}>
-                      {({ progress, page }) => (
-                        <React.Fragment>
-                          <Progress
-                            page={page}
-                            progress={progress}
-                            sections={article && article.sections.length}
-                            toggleSettings={toggleSettings}
-                            toggleComments={toggleComments}
-                          />
-                          {article && (
-                            <Settings
-                              expanded={settings}
-                              close={toggleSettings}
-                              page={page}
-                            />
-                          )}
-                        </React.Fragment>
+                    <ScrollProvider pages={article && article.sections.length}>
+                      <Progress
+                        sections={article && article.sections.length}
+                        toggleSettings={toggleSettings}
+                        toggleComments={toggleComments}
+                      />
+                      {article && (
+                        <Settings expanded={settings} close={toggleSettings} />
                       )}
-                    </ScrollContainer>
+                    </ScrollProvider>
                     <Comments expanded={comments} close={toggleComments} />
                   </React.Fragment>
                 )}
