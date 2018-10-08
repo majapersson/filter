@@ -1,0 +1,20 @@
+[
+  {
+    "articleAuthor": true,
+    "content":
+      "Cras sed felis eget velit aliquet sagittis id consectetur. Commodo quis imperdiet massa tincidunt nunc pulvinar.",
+    "published": "17 juli 2018 - 08.23"
+  },
+  {
+    "artilcleAuthor": false,
+    "author": "Linnea",
+    "content":
+      "Cras sed felis eget velit aliquet sagittis id consectetur. Commodo quis imperdiet massa tincidunt nunc pulvinar.",
+    "published": "17 juli 2018 - 11.34"
+  },
+  {
+    "articleAuthor": true,
+    "content": "Cras sed felis eget velit aliquet sagittis id consectetur.",
+    "published": "17 juli 2018 - 15.48"
+  }
+]

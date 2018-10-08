@@ -7,6 +7,7 @@ import { ContentProvider } from "../context/ContentContext";
 import Navigation from "../components/navigation/Navbar";
 import Progress from "../components/navigation/Progress";
 import Settings from "../components/navigation/Settings";
+import Comments from "../components/navigation/Comments";
 
 import Hero from "../components/Hero";
 import ImageSection from "../components/ImageSection";
@@ -52,29 +53,37 @@ export default class Article extends Component {
       <React.Fragment>
         <ContentProvider article={article}>
           <Navigation dark />
-          <ScrollContainer pages={article && article.sections.length}>
-            {({ progress, page }) => (
+          <Expand>
+            {({ expanded: settings, toggleExpand: toggleSettings }) => (
               <Expand>
-                {({ expanded, toggleExpand }) => (
+                {({ expanded: comments, toggleExpand: toggleComments }) => (
                   <React.Fragment>
-                    <Progress
-                      page={page}
-                      progress={progress}
-                      sections={article && article.sections.length}
-                      toggleSettings={toggleExpand}
-                    />
-                    {article && (
-                      <Settings
-                        expanded={expanded}
-                        close={toggleExpand}
-                        page={page}
-                      />
-                    )}
+                    <ScrollContainer pages={article && article.sections.length}>
+                      {({ progress, page }) => (
+                        <React.Fragment>
+                          <Progress
+                            page={page}
+                            progress={progress}
+                            sections={article && article.sections.length}
+                            toggleSettings={toggleSettings}
+                            toggleComments={toggleComments}
+                          />
+                          {article && (
+                            <Settings
+                              expanded={settings}
+                              close={toggleSettings}
+                              page={page}
+                            />
+                          )}
+                        </React.Fragment>
+                      )}
+                    </ScrollContainer>
+                    <Comments expanded={comments} close={toggleComments} />
                   </React.Fragment>
                 )}
               </Expand>
             )}
-          </ScrollContainer>
+          </Expand>
 
           <main role="main">
             {article && (

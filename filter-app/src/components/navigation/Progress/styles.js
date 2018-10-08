@@ -2,7 +2,10 @@ import styled from "styled-components";
 import { COLORS, FONTS } from "../../../Helpers";
 
 export const Length = styled.div`
-  height: 67.5%;
+  flex-basis: calc(100% - 6rem);
+  flex-grow: 0;
+  flex-shrink: 0;
+  // height: 55%;
   width: 0.125rem;
   background-color: rgba(0, 0, 0, 0.1);
 

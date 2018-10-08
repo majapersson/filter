@@ -1,11 +1,18 @@
 import React, { Component } from "react";
 import { Length, Page, ProgressBar } from "./styles";
 
+import Comments from "../../icons/comments";
 import SettingsIcon from "../../icons/settings";
 
 export default class Progress extends Component {
   render() {
-    const { progress, toggleSettings, page, sections } = this.props;
+    const {
+      page,
+      progress,
+      toggleSettings,
+      toggleComments,
+      sections
+    } = this.props;
     return (
       <ProgressBar
         className="Progress"
@@ -18,7 +25,10 @@ export default class Progress extends Component {
           {page}
           <span>/{sections}</span>
         </Page>
-
+        <Comments
+          style={{ height: "3rem", padding: "0.5rem", width: "3rem" }}
+          toggle={toggleComments}
+        />
         <SettingsIcon toggle={toggleSettings} />
       </ProgressBar>
     );

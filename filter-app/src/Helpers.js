@@ -3,7 +3,7 @@
 export const API_ROOT = process.env.REACT_APP_API_ROOT;
 
 export const COLORS = {
-  accent: "#FFDD1F",
+  accent: "#E1AB99",
   dark: "#000",
   light: "#fff",
   bg: "#fff",

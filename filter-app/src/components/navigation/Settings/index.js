@@ -12,13 +12,13 @@ export const Container = styled.aside`
   height: 100%;
   position: fixed;
   top: 0;
-  transform: translate(-100%, 100%);
+  transform: translateX(-100%);
   transition: transform 500ms cubic-bezier(0.5, 0, 0, 1);
   width: 100%;
   z-index: 3;
 
   background-color: ${COLORS.light};
-  ${props => props.expanded && "transform: translate(0, 0)"};
+  ${props => props.expanded && "transform: translateX(0)"};
 `;
 
 class Settings extends Component {

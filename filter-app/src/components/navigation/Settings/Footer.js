@@ -9,7 +9,7 @@ import size from "../../icons/size";
 import spacing from "../../icons/spacing";
 import brightness from "../../icons/brightness";
 
-const Close = styled.div`
+export const Close = styled.div`
   background-color: ${COLORS.dark};
   height: 3rem;
   padding: 0.5rem;
