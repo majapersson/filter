@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 
 import Expand from "../../HOC/Expand";
 import { SmallLogo } from "../../Logo";

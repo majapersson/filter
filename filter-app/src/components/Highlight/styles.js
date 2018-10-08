@@ -45,4 +45,8 @@ export const StyledHighlight = styled.article`
     min-width: 37.5vw;
     padding: 0 6rem 0 3rem;
   }
+
+  @media (orientation: landscape) {
+    flex-basis: 100%;
+  }
 `;

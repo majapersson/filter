@@ -13,18 +13,10 @@ import Hero from "../components/Hero";
 import ImageSection from "../components/ImageSection";
 import QuoteSection from "../components/QuoteSection";
 
-import { API_ROOT } from "../Helpers.js";
-
 export default class Article extends Component {
   state = {
     article: null,
     progress: 0
-  };
-
-  getData = async id => {
-    // const article = await fetch(`${API_ROOT}/article/${id}`).then(data =>
-    //   data.json()
-    // );
   };
 
   componentDidMount() {
@@ -38,7 +30,6 @@ export default class Article extends Component {
   }
 
   componentWillMount() {
-    // this.getData(this.props.match.params.id);
     const article = JSON.parse(localStorage.getItem("article"));
     this.setState({ article });
     const progress = JSON.parse(localStorage.getItem("progress")).find(

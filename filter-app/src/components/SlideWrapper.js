@@ -39,6 +39,7 @@ const Title = styled.h3`
 
 const Wrapper = styled.section`
   position: relative;
+  margin-bottom: 6rem;
 `;
 
 export default class SlideWrapper extends Component {

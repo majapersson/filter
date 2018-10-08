@@ -1,11 +1,17 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import { COLORS, FONTS } from "../../../Helpers";
 
 const Item = styled.li`
   font-size: 2rem;
   font-family: ${FONTS.sansSerif};
   line-height: 1.5;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 `;
 
 const List = styled.ul`
@@ -32,7 +38,9 @@ class MainMenu extends Component {
   render() {
     return (
       <List style={{ transform: this.props.expanded && "translateX(0)" }}>
-        <Item>Hem</Item>
+        <Item>
+          <Link to="/">Hem</Link>
+        </Item>
         <Item>Magasinet</Item>
         <Item>Shop</Item>
         <Item>Filterbubblan</Item>
