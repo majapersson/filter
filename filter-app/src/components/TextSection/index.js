@@ -18,7 +18,12 @@ class TextSection extends Component {
             >
               <StickyContainer>
                 <Sticky distanceFromTop={0}>
-                  {({ style }) => <Header style={style} color={colors.bg} />}
+                  {({ style }) => (
+                    <Header
+                      style={{ ...style, width: this.props.expanded && "0px" }}
+                      color={colors.bg}
+                    />
+                  )}
                 </Sticky>
                 <Content font={font}>
                   {ReactHtmlParser(this.props.content)}

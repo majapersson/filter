@@ -28,7 +28,7 @@ export const Right = styled.div`
 
 export const StyledLogo = styled.a`
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   padding-bottom: 0.5rem;
   height: 100%;
   margin-left: 0.5rem;
@@ -41,7 +41,7 @@ export const StyledLogo = styled.a`
 
 export const Tab = styled.div`
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   height: 100%;
   padding: 1rem;
   margin-left: 1rem;

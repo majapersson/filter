@@ -22,9 +22,11 @@ export const Header = styled.div`
   width: 100%;
   background-image: linear-gradient(
     to bottom,
-    ${props => props.color && props.color} 20%,
+    ${props => props.color && props.color} 30%,
     transparent 100%
   );
+
+  ${props => props.expanded && "width: 0px"};
 `;
 
 export const Content = styled.div`

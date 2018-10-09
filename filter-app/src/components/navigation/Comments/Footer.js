@@ -30,6 +30,8 @@ const Form = styled.form`
   }
 
   button {
+    border: none;
+    background-color: transparent;
     flex-shrink: 0;
     font-size: 0.875rem;
   }
