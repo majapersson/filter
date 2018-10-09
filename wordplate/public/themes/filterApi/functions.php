@@ -38,6 +38,19 @@ add_action('after_setup_theme', function () {
     ]);
 });
 
+add_action( 'rest_api_init', function() {
+
+	remove_filter( 'rest_pre_serve_request', 'rest_send_cors_headers' );
+	add_filter( 'rest_pre_serve_request', function( $value ) {
+		header( 'Access-Control-Allow-Origin: *' );
+		header( 'Access-Control-Allow-Methods: GET' );
+		header( 'Access-Control-Allow-Credentials: true' );
+
+		return $value;
+
+	});
+}, 15 );
+
 // Enqueue and register scripts the right way.
 add_action('wp_enqueue_scripts', function () {
     wp_deregister_script('jquery');
