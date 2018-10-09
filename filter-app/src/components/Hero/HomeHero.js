@@ -18,8 +18,9 @@ class HomeHero extends Component {
       const data = await fetch(`${API_ROOT}${url}`).then(data => data.json());
       localStorage.setItem("article", JSON.stringify(data));
     }
-
-    this.setState({ redirect: true });
+    setTimeout(() => {
+      this.setState({ redirect: true });
+    }, 500);
   };
 
   render() {

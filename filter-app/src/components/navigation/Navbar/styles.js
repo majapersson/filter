@@ -6,6 +6,7 @@ export const Nav = styled.nav`
   justify-content: space-between;
   height: 4.5rem;
   position: fixed;
+  transition: transform 500ms cubic-bezier(0.5, 0, 0, 1);
   width: 100%;
   z-index: 3;
 
@@ -13,8 +14,11 @@ export const Nav = styled.nav`
     props.dark &&
     `background-image: linear-gradient(to bottom, ${
       COLORS.dark
-    }, transparent);`} @media (min-width: 400px) {
-    height: 6rem;
+    }, transparent)`};
+
+  @media (orientation: landscape) {
+    // transform: translateY(-100%);
+    position: absolute;
   }
 `;
 

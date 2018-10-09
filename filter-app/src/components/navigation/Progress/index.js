@@ -20,7 +20,11 @@ const Wrapper = styled.div`
   z-index: 2;
 
   background-color: ${COLORS.light};
-  transition: all 300ms;
+  transition: all 500ms cubic-bezier(0.5, 0, 0, 1);
+
+  @media (orientation: landscape) {
+    transform: translateX(-100%);
+  }
 `;
 
 export default class Progress extends Component {

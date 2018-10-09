@@ -14,7 +14,7 @@ export const StyledHighlight = styled.article`
 
   background-color: black;
   color: white;
-  transition: flex-basis 300ms;
+  transition: flex-basis 500ms cubic-bezier(0.5, 0, 0, 1);
 
   ${props =>
     props.image

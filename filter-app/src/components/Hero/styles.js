@@ -17,6 +17,10 @@ export const Button = styled.div`
     text-transform: uppercase;
     letter-spacing: 0.13rem;
     margin-right: 1rem;
+
+    @media (orientation: landscape) {
+      font-size: 1rem;
+    }
   }
 
   svg {
@@ -120,6 +124,12 @@ export const Lead = styled.p`
   font-family: ${FONTS.sansSerif};
   font-weight: 700;
   letter-spacing: 0.05vw;
+
+  @media (orientation: landscape) {
+    max-height: 35vh;
+    overflow: hidden;
+    width: 50vw;
+  }
 `;
 
 export const Main = styled.div`
@@ -128,6 +138,16 @@ export const Main = styled.div`
   align-items: flex-start;
   justify-content: space-between;
   z-index: 1;
+`;
+
+export const Middle = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  @media (orientation: landscape) {
+    flex-direction: row;
+    justify-content: space-around;
+  }
 `;
 
 export const Overlay = styled.div`
@@ -146,6 +166,10 @@ export const Title = styled.h2`
   line-height: 1.25;
   margin: 1rem 0;
   z-index: 0;
+
+  @media (orientation: landscape) {
+    font-size: 6.25vw;
+  }
 `;
 
 export const Top = styled.div`

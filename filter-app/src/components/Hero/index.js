@@ -30,7 +30,9 @@ class Hero extends Component {
       localStorage.setItem("article", JSON.stringify(data));
     }
 
-    this.setState({ redirect: true });
+    setTimeout(() => {
+      this.setState({ redirect: true });
+    }, 500);
   };
 
   render() {
