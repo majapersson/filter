@@ -7,6 +7,7 @@ const theme = {
     fg: COLORS.fg
   },
   font: {
+    nightmode: 0,
     size: 1,
     spacing: 1.75
   }
@@ -21,12 +22,25 @@ export class ThemeProvider extends Component {
     const font = { ...this.state.font };
     font[setting] = value;
     this.setState({ font });
+
+    setting === "nightmode" && this.invertTheme();
+  };
+
+  invertTheme = () => {
+    const colors = { ...this.state.colors };
+    colors.bg = this.state.colors.fg;
+    colors.fg = this.state.colors.bg;
+    this.setState({ colors });
   };
 
   render() {
     return (
       <ThemeContext.Provider
-        value={{ ...this.state, handleSettings: this.handleSettings }}
+        value={{
+          ...this.state,
+          handleSettings: this.handleSettings,
+          invertTheme: this.invertTheme
+        }}
       >
         {this.props.children}
       </ThemeContext.Provider>

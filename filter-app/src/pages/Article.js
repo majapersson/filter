@@ -53,7 +53,7 @@ export default class Article extends Component {
           <ScrollProvider pages={article && article.sections.length}>
             <ProgressContext.Consumer>
               {({ scrollTop }) => (
-                <Navigation dark={scrollTop > window.innerHeight} />
+                <Navigation overlay={scrollTop > window.innerHeight} />
               )}
             </ProgressContext.Consumer>
             <Expand>

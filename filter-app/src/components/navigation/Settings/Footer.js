@@ -45,10 +45,11 @@ class Footer extends Component {
             <TextSlider name={"size"} icon={size} min={0.75} max={2} />
             <TextSlider name={"spacing"} icon={spacing} min={1} max={3} />
             <TextSlider
-              name={"brightness"}
+              name={"nightmode"}
               icon={brightness}
-              min={0.5}
-              max={1.5}
+              min={0}
+              max={1}
+              step={1}
             />
           </Settings>
           <ThemeContext.Consumer>

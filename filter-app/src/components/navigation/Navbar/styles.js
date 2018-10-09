@@ -53,7 +53,9 @@ export const Tab = styled.div`
     path,
     g {
       ${props =>
-        props.dark ? `fill: ${COLORS.dark}` : `fill: ${COLORS.light}`};
+        props.overlay
+          ? `fill: ${props.colors.fg}`
+          : `fill: ${props.colors.light}`};
       transition: fill 300ms cubic-bezier(0.5, 0, 0, 1);
     }
   }

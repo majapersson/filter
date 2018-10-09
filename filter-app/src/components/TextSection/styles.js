@@ -22,7 +22,7 @@ export const Header = styled.div`
   width: 100%;
   background-image: linear-gradient(
     to bottom,
-    ${COLORS.light} 20%,
+    ${props => props.color && props.color} 20%,
     transparent 100%
   );
 `;

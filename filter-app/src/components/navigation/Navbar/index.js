@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 
+import ThemeContext from "../../../context/ThemeContext";
 import Expand from "../../HOC/Expand";
 import { SmallLogo } from "../../Logo";
 import Account from "../../icons/account";
@@ -17,19 +18,29 @@ class Navigation extends Component {
           <SmallLogo />
         </StyledLogo>
         <Right>
-          <Tab dark={this.props.dark}>
-            <Account />
-          </Tab>
-          <Expand>
-            {({ expanded, toggleExpand }) => (
+          <ThemeContext.Consumer>
+            {({ colors }) => (
               <React.Fragment>
-                <Tab dark={this.props.dark} onClick={toggleExpand}>
-                  {expanded ? <X style={{ fill: "#FFF" }} /> : <Menu />}
+                <Tab colors={colors} overlay={this.props.overlay}>
+                  <Account />
                 </Tab>
-                <MainMenu expanded={expanded} />
+                <Expand>
+                  {({ expanded, toggleExpand }) => (
+                    <React.Fragment>
+                      <Tab
+                        colors={colors}
+                        overlay={this.props.overlay}
+                        onClick={toggleExpand}
+                      >
+                        {expanded ? <X style={{ fill: "#FFF" }} /> : <Menu />}
+                      </Tab>
+                      <MainMenu expanded={expanded} />
+                    </React.Fragment>
+                  )}
+                </Expand>
               </React.Fragment>
             )}
-          </Expand>
+          </ThemeContext.Consumer>
         </Right>
       </Nav>
     );

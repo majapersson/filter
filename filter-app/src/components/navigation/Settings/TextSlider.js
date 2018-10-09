@@ -33,11 +33,11 @@ const Label = styled.label`
 
 export default class TextSlider extends Component {
   render() {
-    const { min, max, name } = this.props;
+    const { min, max, name, step } = this.props;
     return (
       <React.Fragment>
         <ThemeContext.Consumer>
-          {({ font, handleSettings }) => (
+          {({ font, handleSettings, invertTheme }) => (
             <Wrapper>
               <Label htmlFor={name}>
                 <this.props.icon />
@@ -46,7 +46,7 @@ export default class TextSlider extends Component {
                 min={min}
                 max={max}
                 value={font[name]}
-                step={(max - min) / 10}
+                step={step ? step : (max - min) / 10}
                 handle={handle}
                 railStyle={{ height: "2px" }}
                 trackStyle={{ backgroundColor: "inherit" }}
