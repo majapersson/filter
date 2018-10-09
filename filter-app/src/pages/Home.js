@@ -40,7 +40,7 @@ export default class Home extends Component {
         <Main role="main">
           {articles && (
             <React.Fragment>
-              <ContentProvider article={articles[1]}>
+              <ContentProvider article={articles[0]}>
                 <Expand>
                   {({ expanded: fullWidth, toggleExpand: toggleFull }) => (
                     <HomeHero toggleFull={toggleFull} fullWidth={fullWidth} />

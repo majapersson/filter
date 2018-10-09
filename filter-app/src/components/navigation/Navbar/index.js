@@ -12,21 +12,18 @@ import { Nav, Right, StyledLogo, Tab } from "./styles.js";
 class Navigation extends Component {
   render() {
     return (
-      <Nav dark={this.props.dark}>
+      <Nav>
         <StyledLogo href="/">
           <SmallLogo />
         </StyledLogo>
         <Right>
-          <Tab transparent={this.props.transparent}>
+          <Tab dark={this.props.dark}>
             <Account />
           </Tab>
           <Expand>
             {({ expanded, toggleExpand }) => (
               <React.Fragment>
-                <Tab
-                  transparent={this.props.transparent}
-                  onClick={toggleExpand}
-                >
+                <Tab dark={this.props.dark} onClick={toggleExpand}>
                   {expanded ? <X style={{ fill: "#FFF" }} /> : <Menu />}
                 </Tab>
                 <MainMenu expanded={expanded} />

@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 
-import ScrollProvider from "../components/HOC/ScrollProvider";
+import ScrollProvider, {
+  ProgressContext
+} from "../components/HOC/ScrollProvider";
 import Expand from "../components/HOC/Expand";
 import { ContentProvider } from "../context/ContentContext";
 
@@ -34,10 +36,13 @@ export default class Article extends Component {
     this.setState({ article });
     const stored = JSON.parse(localStorage.getItem("progress"));
 
-    const progress = stored
-      ? stored.find(item => item.article === this.props.match.params.id)
-      : 0;
-    this.setState({ progress: progress.progress });
+    const progress =
+      stored &&
+      stored.find(item => item.article === this.props.match.params.id);
+    this.setState({
+      progress:
+        progress !== undefined && progress !== null ? progress.progress : 0
+    });
   }
 
   render() {
@@ -45,13 +50,17 @@ export default class Article extends Component {
     return (
       <React.Fragment>
         <ContentProvider article={article}>
-          <Navigation dark />
-          <Expand>
-            {({ expanded: settings, toggleExpand: toggleSettings }) => (
-              <Expand>
-                {({ expanded: comments, toggleExpand: toggleComments }) => (
-                  <React.Fragment>
-                    <ScrollProvider pages={article && article.sections.length}>
+          <ScrollProvider pages={article && article.sections.length}>
+            <ProgressContext.Consumer>
+              {({ scrollTop }) => (
+                <Navigation dark={scrollTop > window.innerHeight} />
+              )}
+            </ProgressContext.Consumer>
+            <Expand>
+              {({ expanded: settings, toggleExpand: toggleSettings }) => (
+                <Expand>
+                  {({ expanded: comments, toggleExpand: toggleComments }) => (
+                    <React.Fragment>
                       <Progress
                         sections={article && article.sections.length}
                         toggleSettings={toggleSettings}
@@ -60,13 +69,13 @@ export default class Article extends Component {
                       {article && (
                         <Settings expanded={settings} close={toggleSettings} />
                       )}
-                    </ScrollProvider>
-                    <Comments expanded={comments} close={toggleComments} />
-                  </React.Fragment>
-                )}
-              </Expand>
-            )}
-          </Expand>
+                      <Comments expanded={comments} close={toggleComments} />
+                    </React.Fragment>
+                  )}
+                </Expand>
+              )}
+            </Expand>
+          </ScrollProvider>
 
           <main role="main">
             {article && (

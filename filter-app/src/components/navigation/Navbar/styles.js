@@ -10,12 +10,6 @@ export const Nav = styled.nav`
   width: 100%;
   z-index: 3;
 
-  ${props =>
-    props.dark &&
-    `background-image: linear-gradient(to bottom, ${
-      COLORS.dark
-    }, transparent)`};
-
   @media (orientation: landscape) {
     // transform: translateY(-100%);
     position: absolute;
@@ -59,7 +53,8 @@ export const Tab = styled.div`
     path,
     g {
       ${props =>
-        props.transparent ? `fill: ${COLORS.fg}` : `fill: ${COLORS.bg}`};
+        props.dark ? `fill: ${COLORS.dark}` : `fill: ${COLORS.light}`};
+      transition: fill 300ms cubic-bezier(0.5, 0, 0, 1);
     }
   }
 `;

@@ -3,13 +3,28 @@ import { COLORS, FONTS } from "../../Helpers";
 
 export const Text = styled.article`
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
   padding: 12.5vh 0;
+  position: relative;
   width: 87.2%;
 
   overflow: hidden;
 
   ${props => props.expanded && "width: 0px"};
+`;
+
+export const Header = styled.div`
+  height: 6rem;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background-image: linear-gradient(
+    to bottom,
+    ${COLORS.light} 20%,
+    transparent 100%
+  );
 `;
 
 export const Content = styled.div`
@@ -39,6 +54,7 @@ export const Content = styled.div`
   }
 
   blockquote {
+    font-size: 1.5rem;
     font-style: italic;
 
     p {
@@ -52,17 +68,22 @@ export const Content = styled.div`
     }
 
     &:before {
-      content: "» ";
+      content: "“ ";
     }
 
     &:after {
-      content: " «";
+      content: " ”";
     }
 
     @media (min-width: 400) {
       display: flex;
       align-items: center;
     }
+  }
+
+  .inledande-txt {
+    font-family: ${FONTS.sansSerif};
+    font-weight: 700;
   }
 
   a {

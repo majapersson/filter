@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import ReactHtmlParser from "react-html-parser";
-import { Content, Text } from "./styles";
+import { StickyContainer, Sticky } from "react-sticky";
+
+import { Content, Header, Text } from "./styles";
 
 import ThemeContext from "../../context/ThemeContext";
 
@@ -14,9 +16,14 @@ class TextSection extends Component {
               className="TextSection"
               style={{ backgroundColor: colors.bg, color: colors.fg }}
             >
-              <Content font={font}>
-                {ReactHtmlParser(this.props.content)}
-              </Content>
+              <StickyContainer>
+                <Sticky distanceFromTop={0}>
+                  {({ style }) => <Header style={style} />}
+                </Sticky>
+                <Content font={font}>
+                  {ReactHtmlParser(this.props.content)}
+                </Content>
+              </StickyContainer>
             </Text>
           )}
         </ThemeContext.Consumer>

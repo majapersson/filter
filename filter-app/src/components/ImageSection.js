@@ -26,7 +26,7 @@ export default class ImageSection extends Component {
 
     const options = {
       root: null,
-      rootMargin: "50% 0px -75% 0px",
+      rootMargin: "0px 0px 0px 0px",
       threshold: 1.0
     };
 

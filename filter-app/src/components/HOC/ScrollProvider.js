@@ -7,14 +7,19 @@ export const ProgressContext = React.createContext();
 class ScrollProvider extends Component {
   state = {
     progress: 0,
-    page: 0
+    page: 0,
+    scrollTop: 0
   };
 
   handleScroll = () => {
     const { scrollHeight, scrollTop } = document.scrollingElement;
     const progress = (scrollTop / (scrollHeight - window.innerHeight)) * 100;
     const page = Math.floor((progress / 100) * this.props.pages) + 1;
-    this.setState({ progress, page });
+    this.setState({
+      progress,
+      page,
+      scrollTop
+    });
     this.storeProgress(progress);
   };
 
