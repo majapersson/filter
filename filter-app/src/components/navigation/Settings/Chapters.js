@@ -21,10 +21,13 @@ const Chapter = styled.li`
   ${props =>
     props.active &&
     ` font-weight: 700;
+      transition: all 500ms cubic-bezier(0.5, 0, 0, 1);
+
 
       span {
         background: ${COLORS.dark};
         color: ${COLORS.light};
+        transition: all 500ms cubic-bezier(0.5, 0, 0, 1);
       }
     `};
 `;
@@ -61,7 +64,9 @@ const Chapters = ({ page }) => (
       <ProgressContext.Consumer>
         {({ page }) => (
           <ChapterList>
-            <Subheader>Artikelindex</Subheader>
+            <Subheader>
+              Artikelindex <span>{sections.length} kapitel</span>
+            </Subheader>
 
             {sections.map((item, index) => (
               <Chapter key={index} active={index + 1 === page}>

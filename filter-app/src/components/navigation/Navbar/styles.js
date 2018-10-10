@@ -5,6 +5,7 @@ export const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
   height: 4.5rem;
+  padding-top: 1.5rem;
   position: fixed;
   transition: transform 500ms cubic-bezier(0.5, 0, 0, 1);
   width: 100%;
@@ -29,13 +30,14 @@ export const Right = styled.div`
 export const StyledLogo = styled.a`
   display: flex;
   align-items: center;
+  justify-content: center;
   padding-bottom: 0.5rem;
   height: 100%;
-  margin-left: 0.5rem;
+  width: 3rem;
 
   svg {
     fill: ${COLORS.light};
-    width: 2rem;
+    width: 1.5rem;
   }
 `;
 
@@ -44,11 +46,10 @@ export const Tab = styled.div`
   align-items: center;
   height: 100%;
   padding: 1rem;
-  margin-left: 1rem;
   z-index: 3;
 
   svg {
-    width: 1rem;
+    width: 1.25rem;
 
     path,
     g {

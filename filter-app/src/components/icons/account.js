@@ -1,7 +1,7 @@
 import React from "react";
 
-const Account = () => (
-  <svg viewBox="0 0 16 16">
+const Account = ({ style }) => (
+  <svg viewBox="0 0 16 16" style={{ ...style }}>
     <path
       fill="#FFF"
       fillRule="nonzero"

@@ -22,7 +22,7 @@ class Navigation extends Component {
             {({ colors }) => (
               <React.Fragment>
                 <Tab colors={colors} overlay={this.props.overlay}>
-                  <Account />
+                  <Account style={{ width: "1rem" }} />
                 </Tab>
                 <Expand>
                   {({ expanded, toggleExpand }) => (

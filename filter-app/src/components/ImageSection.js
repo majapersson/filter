@@ -51,12 +51,7 @@ export default class ImageSection extends Component {
                 expanded={expanded}
                 toggle={toggleExpand}
               >
-                <ExpandButton
-                  toggleHighlight={toggleExpand}
-                  expanded={expanded}
-                  clicked={this.state.clicked}
-                  inView={this.state.inView}
-                />
+                <ExpandButton inView={this.state.inView} />
               </Highlight>
               <TextSection expanded={expanded} content={section.content} />
             </React.Fragment>

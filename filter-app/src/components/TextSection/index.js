@@ -20,7 +20,10 @@ class TextSection extends Component {
                 <Sticky distanceFromTop={0}>
                   {({ style }) => (
                     <Header
-                      style={{ ...style, width: this.props.expanded && "0px" }}
+                      style={{
+                        ...style,
+                        transform: this.props.expanded && "translateY(-100%)"
+                      }}
                       color={colors.bg}
                     />
                   )}

@@ -4,11 +4,18 @@ import styled from "styled-components";
 import { COLORS, FONTS } from "../../../Helpers";
 import { ProgressContext } from "../../HOC/ScrollProvider";
 
-const Length = styled.div`
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   flex-basis: calc(100% - 6rem);
   flex-grow: 0;
   flex-shrink: 0;
-  // height: 55%;
+  padding-top: 0.75rem;
+`;
+
+const Length = styled.div`
+  height: calc(100% - 1.5rem);
   width: 0.125rem;
   background-color: rgba(0, 0, 0, 0.1);
 
@@ -32,7 +39,7 @@ class ProgressBar extends Component {
     return (
       <ProgressContext.Consumer>
         {({ page, progress }) => (
-          <React.Fragment>
+          <Wrapper>
             <Length>
               <div style={{ height: `${progress}%` }} />
             </Length>
@@ -40,7 +47,7 @@ class ProgressBar extends Component {
               {page}
               <span>/{sections}</span>
             </Page>
-          </React.Fragment>
+          </Wrapper>
         )}
       </ProgressContext.Consumer>
     );

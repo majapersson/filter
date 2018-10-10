@@ -28,6 +28,7 @@ const Label = styled.label`
   align-items: center;
   justify-content: center;
   height: 3rem;
+  margin-right: 0.5rem;
   width: 3rem;
 `;
 

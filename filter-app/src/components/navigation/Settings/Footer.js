@@ -22,16 +22,20 @@ export const Close = styled.div`
 const Wrapper = styled.div`
   display: flex;
   height: 9rem;
+  padding: 0 1.25rem;
 `;
+
 const Settings = styled.div`
   flex-basis: 40%;
   flex-shrink: 0;
 `;
+
 const Demo = styled.p`
   overflow: hidden;
   margin: 1.25rem;
   margin-top: 0;
-  flex-basis: 40%;
+  padding: 0.5rem;
+  flex-basis: 45%;
   flex-shrink: 0;
 `;
 

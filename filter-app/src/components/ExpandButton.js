@@ -15,6 +15,8 @@ const Button = styled.button`
   border: none;
   color: #000;
   font: 1rem ${FONTS.sansSerif};
+  outline-color: ${COLORS.accent};
+  pointer-events: none;
   transform: translateX(-100%);
   transition: transform 500ms cubic-bezier(0.5, 0, 0, 1);
 
@@ -24,7 +26,7 @@ const Button = styled.button`
 export default class ExpandButton extends Component {
   render() {
     return (
-      <Button onClick={this.props.toggleHighlight} inView={this.props.inView}>
+      <Button {...this.props}>
         <Plus />
       </Button>
     );

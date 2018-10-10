@@ -15,7 +15,6 @@ const Wrapper = styled.div`
   bottom: 0;
   left: 0;
   align-items: center;
-  padding: 0.75rem 0;
   width: 3rem;
   z-index: 2;
 
@@ -39,10 +38,18 @@ export default class Progress extends Component {
           >
             <ProgressBar sections={sections} />
             <Comments
-              style={{ height: "3rem", padding: "0.5rem", width: "3rem" }}
+              style={{
+                flexBasis: "3rem",
+                flexShrink: 0,
+                width: "3rem",
+                padding: "0.5rem"
+              }}
               toggle={toggleComments}
             />
-            <SettingsIcon toggle={toggleSettings} />
+            <SettingsIcon
+              style={{ flexBasis: "3rem", flexShrink: 0 }}
+              toggle={toggleSettings}
+            />
           </Wrapper>
         )}
       </ProgressContext.Consumer>

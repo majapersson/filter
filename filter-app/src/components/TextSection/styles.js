@@ -20,13 +20,13 @@ export const Header = styled.div`
   position: absolute;
   top: 0;
   width: 100%;
+
   background-image: linear-gradient(
     to bottom,
     ${props => props.color && props.color} 30%,
     transparent 100%
   );
-
-  ${props => props.expanded && "width: 0px"};
+  transition: transform 500ms cubic-bezier(0.5, 0, 0, 1);
 `;
 
 export const Content = styled.div`
@@ -65,8 +65,8 @@ export const Content = styled.div`
 
     &:before,
     &:after {
+      color: #aaa;
       font-style: normal;
-      opacity: 0.33;
     }
 
     &:before {
@@ -90,7 +90,8 @@ export const Content = styled.div`
 
   a {
     background-color: ${COLORS.accent};
-    color: inherit;
+    color: ${COLORS.dark};
     text-decoration: none;
+    padding: 0.2rem;
   }
 `;
