@@ -31,10 +31,12 @@ export default class Progress extends Component {
     const { toggleSettings, toggleComments, sections } = this.props;
     return (
       <ProgressContext.Consumer>
-        {({ progress }) => (
+        {({ progress, scrollTop }) => (
           <Wrapper
             className="Progress"
-            style={{ bottom: progress < 3 && -37.5 + "vh" }}
+            style={{
+              bottom: scrollTop < window.innerHeight / 2 && -37.5 + "vh"
+            }}
           >
             <SettingsIcon
               style={{ flexBasis: "3rem", flexShrink: 0 }}

@@ -42,6 +42,9 @@ export const HeroSection = styled.article`
   background-attachment: fixed;
   background-size: cover;
   background-position: center center;
+  background-repeat: no-repeat;
+  transition: background 500ms cubic-bezier(0.5, 0, 0, 1);
+
   &.heroOpen {
     position: fixed;
     top: 0;
@@ -124,6 +127,7 @@ export const Lead = styled.p`
   font-family: ${FONTS.sansSerif};
   font-weight: 700;
   letter-spacing: 0.05vw;
+  position: relative;
 
   @media (orientation: landscape) {
     max-height: 35vh;

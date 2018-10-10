@@ -26,8 +26,10 @@ class Hero extends Component {
   delayLink = async (e, url) => {
     if (this.props.toggleFull) {
       this.props.toggleFull();
-      const data = await fetch(`${API_ROOT}${url}`).then(data => data.json());
-      localStorage.setItem("article", JSON.stringify(data));
+      if (url !== "/") {
+        const data = await fetch(`${API_ROOT}${url}`).then(data => data.json());
+        localStorage.setItem("article", JSON.stringify(data));
+      }
     }
 
     setTimeout(() => {
@@ -42,9 +44,7 @@ class Hero extends Component {
         {({ author, id, image, lead, magazine, photo, title, type }) => (
           <HeroSection
             className={`Hero ${heroOpen ? "heroOpen" : ""}`}
-            style={{
-              backgroundImage: !heroOpen && `url(${image.sizes.large})`
-            }}
+            style={{}}
           >
             {this.state.redirect && (
               <Redirect to={heroOpen ? `/article/${id}` : "/"} />
@@ -54,10 +54,15 @@ class Hero extends Component {
               style={{ backgroundColor: heroOpen && "rgba(0, 0, 0, 0.9)" }}
             />
             <Main>
-              {heroOpen && (
+              {heroOpen ? (
                 <Image
                   style={{ backgroundImage: `url(${image.sizes.large})` }}
                   fullWidth={fullWidth}
+                />
+              ) : (
+                <Image
+                  style={{ backgroundImage: `url(${image.sizes.large})` }}
+                  fullWidth={!fullWidth}
                 />
               )}
               <Top>
@@ -85,7 +90,7 @@ class Hero extends Component {
                 right={heroOpen && "true"}
               />
             </Main>
-            <Info>
+            <Info style={{ opacity: fullWidth && 0 }}>
               <div>
                 <p>{type}</p>
                 <p>
