@@ -92,33 +92,6 @@ add_action('init', function() {
                             'required' => true,
                         ])
                     ]
-                ]),
-                acf_layout([
-                    'name'          => 'quote_section',
-                    'label'         => __('Section with quote'),
-                    'sub_fields'    => [
-                        acf_text([
-                            'name' => 'title',
-                            'label' => __('Title'),
-                            'instructions' => __('Add the section title.'),
-                            'required' => true,
-                        ]),
-                        acf_wysiwyg([
-                            'name' => 'content',
-                            'label' => __('Content'),
-                            'instructions' => __('Add the text content.'),
-                            'required' => true,
-                            'media_upload' => false,
-                            'tabs' => ['visual', 'text'],
-                            'toolbar' => 'simple',
-                        ]),
-                        acf_text([
-                            'name' => 'quote',
-                            'label' => __('Quote'),
-                            'instructions' => __('Add the quote to highlight.'),
-                            'required' => true,
-                        ])
-                    ]
                 ])
             ]
         ])

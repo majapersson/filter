@@ -13,7 +13,6 @@ import Comments from "../components/navigation/Comments";
 
 import Hero from "../components/Hero";
 import ImageSection from "../components/ImageSection";
-import QuoteSection from "../components/QuoteSection";
 
 export default class Article extends Component {
   state = {
@@ -85,12 +84,6 @@ export default class Article extends Component {
                   (section, index) =>
                     section.acf_fc_layout === "image_section" ? (
                       <ImageSection
-                        section={section}
-                        key={index}
-                        page={index + 1}
-                      />
-                    ) : section.acf_fc_layout === "quote_section" ? (
-                      <QuoteSection
                         section={section}
                         key={index}
                         page={index + 1}
