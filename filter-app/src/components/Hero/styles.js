@@ -45,6 +45,7 @@ export const HeroSection = styled.article`
   &.heroOpen {
     position: fixed;
     top: 0;
+    left: 0;
 
     * {
       animation: fade-in 0.7s cubic-bezier(0.5, 0, 0, 1) forwards;
