@@ -79,7 +79,7 @@ class Hero extends Component {
                 </Lead>
               </Middle>
               <ArrowButton
-                title={heroOpen ? "Läs artikeln" : "Scrolla ner"}
+                title={heroOpen ? "Läs artikel" : "Scrolla ner"}
                 url={heroOpen ? `/article/${id}` : "#"}
                 toggle={heroOpen && this.delayLink}
                 right={heroOpen && "true"}

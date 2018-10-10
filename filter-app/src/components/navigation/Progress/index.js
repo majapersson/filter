@@ -36,7 +36,10 @@ export default class Progress extends Component {
             className="Progress"
             style={{ bottom: progress < 3 && -37.5 + "vh" }}
           >
-            <ProgressBar sections={sections} />
+            <SettingsIcon
+              style={{ flexBasis: "3rem", flexShrink: 0 }}
+              toggle={toggleSettings}
+            />
             <Comments
               style={{
                 flexBasis: "3rem",
@@ -46,10 +49,7 @@ export default class Progress extends Component {
               }}
               toggle={toggleComments}
             />
-            <SettingsIcon
-              style={{ flexBasis: "3rem", flexShrink: 0 }}
-              toggle={toggleSettings}
-            />
+            <ProgressBar sections={sections} />
           </Wrapper>
         )}
       </ProgressContext.Consumer>

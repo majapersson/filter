@@ -38,24 +38,23 @@ export const HeroSection = styled.article`
   padding: 0 1rem 0.5rem 4rem;
   z-index: 2;
 
-  color: ${COLORS.light}
+  color: ${COLORS.light};
   background-attachment: fixed;
   background-size: cover;
   background-position: center center;
-
   &.heroOpen {
     position: fixed;
     top: 0;
 
     * {
-      animation: fade-in .7s cubic-bezier(0.5,0,0,1) forwards;
+      animation: fade-in 0.7s cubic-bezier(0.5, 0, 0, 1) forwards;
     }
 
     .Title {
-      animation: slide-in .7s cubic-bezier(0.5,0,0,1) forwards;
+      animation: slide-in 0.7s cubic-bezier(0.5, 0, 0, 1) forwards;
     }
     .Lead {
-      animation: slide-in .7s cubic-bezier(0.5,0,0,1) forwards;
+      animation: slide-in 0.7s cubic-bezier(0.5, 0, 0, 1) forwards;
       animation-delay: 0.05s;
     }
   }
@@ -65,14 +64,14 @@ export const Image = styled.div`
   height: 75%;
   position: absolute;
   top: 50%;
-  right: 18.75vw;
+  left: 0;
   width: 80vw;
 
   background-position: center center;
   background-size: cover;
 
   cursor: pointer;
-  filter: brightness(50%);
+  filter: brightness(70%);
   object-fit: cover;
   transform: translateY(-50%);
   transition: filter 300ms, width 500ms cubic-bezier(1, 0, 0, 1),

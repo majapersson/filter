@@ -11,7 +11,7 @@ const Wrapper = styled.div`
   flex-basis: calc(100% - 6rem);
   flex-grow: 0;
   flex-shrink: 0;
-  padding-top: 0.75rem;
+  padding: 1rem 0 1.5rem 0;
 `;
 
 const Length = styled.div`
@@ -28,6 +28,8 @@ const Page = styled.span`
   font-family: ${FONTS.sansSerif};
   font-size: 1.25rem;
   font-weight: 300;
+  padding-top: 1rem;
+
   span {
     font-size: 50%;
   }

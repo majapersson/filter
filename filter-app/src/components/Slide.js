@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import { COLORS } from "../Helpers";
 
 import ContentContext from "../context/ContentContext";
 import Expand from "./HOC/Expand";
@@ -7,12 +8,9 @@ import Hero from "./Hero";
 
 const Image = styled.img`
   height: 12rem;
-  position: relative;
-  left: 0;
-  width: 67vw;
-
   cursor: pointer;
-  filter: brightness(50%);
+  filter: brightness(70%);
+  object-fit: cover;
   transition: filter 300ms, transform 500ms cubic-bezier(1, 0, 0, 1);
   z-index: 0;
 
@@ -40,6 +38,22 @@ const Image = styled.img`
   }
 `;
 
+const Title = styled.p`
+  color: ${COLORS.light};
+  margin: 0;
+  opacity: 0.33;
+  margin: 0 1rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+`;
+
+const Wrapper = styled.div`
+  position: relative;
+  left: 0;
+  width: 67vw;
+`;
+
 class Slide extends Component {
   render() {
     const { toggleExpand, expanded } = this.props;
@@ -47,14 +61,15 @@ class Slide extends Component {
       <Expand>
         {({ expanded: fullWidth, toggleExpand: toggleFull }) => (
           <ContentContext.Consumer>
-            {({ image }) => (
-              <React.Fragment>
+            {({ image, title }) => (
+              <Wrapper>
                 <Image
                   src={image.sizes.medium}
                   expanded={expanded}
                   onClick={toggleExpand}
                   fullWidth={fullWidth}
                 />
+                <Title>{title}</Title>
                 {expanded && (
                   <Hero
                     heroOpen
@@ -63,7 +78,7 @@ class Slide extends Component {
                     fullWidth={fullWidth}
                   />
                 )}
-              </React.Fragment>
+              </Wrapper>
             )}
           </ContentContext.Consumer>
         )}

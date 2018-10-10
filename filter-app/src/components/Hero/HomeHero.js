@@ -43,7 +43,7 @@ class HomeHero extends Component {
                   .join(" ")}
               </Lead>
               <ArrowButton
-                title={"Läs artikeln"}
+                title={"Läs artikel"}
                 url={`/article/${id}`}
                 toggle={this.delayLink}
                 right={true}
